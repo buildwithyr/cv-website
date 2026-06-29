@@ -30,3 +30,28 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+// Foto-Karussell: Prev/Next scrollen den Track um ~eine Slide-Breite
+document.addEventListener('DOMContentLoaded', function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  document.querySelectorAll('.carousel').forEach(function (carousel) {
+    var track = carousel.querySelector('.carousel-track');
+    var prev = carousel.querySelector('.carousel-prev');
+    var next = carousel.querySelector('.carousel-next');
+    if (!track) return;
+
+    function step() {
+      var slide = track.querySelector('.carousel-slide');
+      var gap = parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap) || 0;
+      return slide ? slide.getBoundingClientRect().width + gap : track.clientWidth * 0.8;
+    }
+
+    function scrollByDir(dir) {
+      track.scrollBy({ left: dir * step(), behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    if (prev) prev.addEventListener('click', function () { scrollByDir(-1); });
+    if (next) next.addEventListener('click', function () { scrollByDir(1); });
+  });
+});

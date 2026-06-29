@@ -613,6 +613,107 @@ img { max-width: 100%; display: block; }
 .btn-cv:hover { background: var(--brass-light); transform: translateY(-1px); }
 
 /* ============================================
+   PRIVAT (Abseits der Arbeit)
+   ============================================ */
+.private-intro { max-width: 640px; margin-bottom: 2.75rem; }
+
+.private-intro p {
+  font-size: 1.05rem;
+  color: var(--ink);
+  line-height: 1.75;
+}
+
+/* Foto-Karussell */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.carousel-track {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  padding: 0.5rem 0.25rem;
+  margin: -0.5rem -0.25rem;
+  scrollbar-width: none;
+}
+
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-slide {
+  flex: 0 0 min(82%, 360px);
+  scroll-snap-align: start;
+}
+
+.carousel-slide img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.carousel-btn {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--wood-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: background 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-btn svg { width: 18px; height: 18px; }
+.carousel-btn:hover { border-color: var(--wood-dark); transform: translateY(-1px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .carousel-track { scroll-behavior: auto; }
+}
+
+/* Optionales Video */
+.video-embed {
+  margin-top: 2.75rem;
+  max-width: 720px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--oak-light);
+}
+
+.video-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
+.video-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.video-placeholder svg { width: 46px; height: 46px; opacity: 0.5; }
+
+/* ============================================
    FOOTER
    ============================================ */
 .site-footer {
