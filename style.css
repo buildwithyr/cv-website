@@ -201,27 +201,34 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: clamp(460px, 70vh, 660px);
+  min-height: 100vh;
+  min-height: 100svh;
   padding: 5rem 0;
 }
 
+/* Bild scharf, unbearbeitet ("so wie es ist") */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("hero-cnc.webp") center / cover no-repeat;
-  filter: blur(3px) brightness(0.6);
-  transform: scale(1.06);
+  background: url("hero-cnc.webp") left center / cover no-repeat;
   z-index: 0;
 }
 
+/* Dezenter heller Scrim hinter dem Text (links); Bild rechts bleibt sichtbar */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg,
-    rgba(61, 43, 31, 0.28) 0%,
-    rgba(61, 43, 31, 0.74) 100%);
+  background:
+    linear-gradient(90deg,
+      rgba(251, 249, 245, 0.88) 0%,
+      rgba(251, 249, 245, 0.55) 32%,
+      rgba(251, 249, 245, 0.12) 55%,
+      rgba(251, 249, 245, 0) 70%),
+    linear-gradient(0deg,
+      rgba(251, 249, 245, 0.22) 0%,
+      rgba(251, 249, 245, 0) 28%);
   z-index: 1;
 }
 
@@ -234,7 +241,7 @@ img { max-width: 100%; display: block; }
   padding: 0 var(--gutter);
 }
 
-.hero .eyebrow { color: var(--brass-light); margin-bottom: 1.5rem; }
+.hero .eyebrow { color: var(--brass); margin-bottom: 1.5rem; }
 
 .hero h1 {
   font-family: var(--font-display);
@@ -242,17 +249,16 @@ img { max-width: 100%; display: block; }
   font-size: clamp(2.6rem, 5.5vw, 4.25rem);
   line-height: 1.04;
   letter-spacing: -0.025em;
-  color: var(--oak-light);
-  text-shadow: 0 2px 24px rgba(20, 12, 6, 0.45);
+  color: var(--wood-dark);
+  text-shadow: 0 1px 1px rgba(251, 249, 245, 0.5);
 }
 
 .hero-lede {
   margin-top: 1.75rem;
   font-size: 1.1rem;
   line-height: 1.65;
-  color: rgba(244, 237, 224, 0.92);
+  color: var(--wood-mid);
   max-width: 460px;
-  text-shadow: 0 1px 12px rgba(20, 12, 6, 0.45);
 }
 
 .hero-actions {
@@ -261,11 +267,6 @@ img { max-width: 100%; display: block; }
   margin-top: 2.5rem;
   flex-wrap: wrap;
 }
-
-.hero .btn-primary { background: var(--brass); color: var(--wood-dark); }
-.hero .btn-primary:hover { background: var(--brass-light); }
-.hero .btn-ghost { border-color: rgba(244, 237, 224, 0.5); color: var(--oak-light); }
-.hero .btn-ghost:hover { border-color: var(--oak-light); background: rgba(244, 237, 224, 0.08); }
 
 /* ============================================
    STATS
@@ -757,7 +758,7 @@ img { max-width: 100%; display: block; }
     z-index: 10;
   }
 
-  .hero { min-height: 72vh; padding: 4rem 0; }
+  .hero { min-height: 100vh; min-height: 100svh; padding: 4rem 0; }
   .stats { grid-template-columns: repeat(2, 1fr); gap: 2rem; }
   .preview-cards { grid-template-columns: 1fr; padding-top: 4rem; padding-bottom: 4rem; }
   .skills-grid { grid-template-columns: 1fr; }
