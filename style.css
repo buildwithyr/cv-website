@@ -117,6 +117,19 @@ img { max-width: 100%; display: block; }
   background: transparent;
 }
 
+.home .main-nav a {
+  color: var(--wood-dark);
+  font-weight: 600;
+}
+
+.home .main-nav a[aria-current="page"] {
+  color: var(--wood-dark);
+}
+
+.home .logo {
+  color: var(--wood-dark);
+}
+
 .logo {
   font-family: var(--font-display);
   font-weight: 700;
