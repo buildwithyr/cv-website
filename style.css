@@ -148,19 +148,48 @@ img { max-width: 100%; display: block; }
 }
 
 /* ============================================
-   HERO
+   HERO (Hintergrundbild)
    ============================================ */
 .hero {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 2rem 1.5rem 4rem;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: clamp(440px, 68vh, 640px);
+  padding: 4rem 0;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 3rem;
-  align-items: center;
+/* Bildebene: leicht unscharf und abgedunkelt */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("hero-cnc.webp") center / cover no-repeat;
+  filter: blur(3px) brightness(0.62);
+  transform: scale(1.06);
+  z-index: 0;
+}
+
+/* Verlauf-Overlay: oben leicht, unten kräftiger (Wood-Dark) */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(61, 43, 31, 0.30) 0%,
+    rgba(61, 43, 31, 0.78) 100%);
+  z-index: 1;
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 1.5rem;
 }
 
 .eyebrow {
@@ -171,20 +200,26 @@ img { max-width: 100%; display: block; }
   margin-bottom: 1.25rem;
 }
 
-.hero-text h1 {
+.hero .eyebrow {
+  color: var(--brass-light);
+}
+
+.hero h1 {
   font-family: var(--font-display);
   font-weight: 800;
   font-size: clamp(2.5rem, 5vw, 4rem);
   line-height: 1.05;
-  color: var(--wood-dark);
+  color: var(--oak-light);
   letter-spacing: -0.01em;
+  text-shadow: 0 2px 16px rgba(20, 12, 6, 0.55);
 }
 
 .hero-lede {
   margin-top: 1.5rem;
   font-size: 1.1rem;
-  color: var(--wood-mid);
+  color: rgba(244, 237, 224, 0.92);
   max-width: 480px;
+  text-shadow: 0 1px 10px rgba(20, 12, 6, 0.5);
 }
 
 .hero-actions {
@@ -222,49 +257,24 @@ img { max-width: 100%; display: block; }
   color: var(--oak-light);
 }
 
-/* Blueprint SVG illustration */
-.hero-visual {
-  display: flex;
-  justify-content: center;
+/* Buttons über dem dunklen Hero-Bild */
+.hero .btn-primary {
+  background: var(--brass);
+  color: var(--wood-dark);
 }
 
-.blueprint {
-  width: 100%;
-  max-width: 360px;
+.hero .btn-primary:hover {
+  background: var(--brass-light);
 }
 
-.bp-frame {
-  fill: none;
-  stroke: var(--wood-dark);
-  stroke-width: 1.5;
+.hero .btn-ghost {
+  border-color: var(--oak-light);
+  color: var(--oak-light);
 }
 
-.bp-shape {
-  fill: var(--oak);
-  stroke: var(--wood-mid);
-  stroke-width: 1.5;
-}
-
-.bp-dim {
-  stroke: var(--brass);
-  stroke-width: 1;
-}
-
-.bp-dim-thin {
-  stroke: var(--wood-mid);
-  stroke-width: 0.75;
-  stroke-dasharray: 4 3;
-}
-
-.bp-crosshair {
-  stroke: var(--wood-dark);
-  stroke-width: 1;
-}
-
-.bp-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  fill: var(--wood-mid);
+.hero .btn-ghost:hover {
+  background: var(--oak-light);
+  color: var(--wood-dark);
 }
 
 /* ============================================
@@ -708,8 +718,7 @@ img { max-width: 100%; display: block; }
     z-index: 10;
   }
 
-  .hero-grid { grid-template-columns: 1fr; }
-  .hero-visual { order: -1; max-width: 280px; margin: 0 auto; }
+  .hero { min-height: 70vh; padding: 3rem 0; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .preview-cards { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
