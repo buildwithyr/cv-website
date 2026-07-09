@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Werdegang - Yannick Reiter</title>
-<meta name="description" content="Beruflicher Werdegang von Yannick Reiter - von der Fachschule Mödling über Puchegger & Jilg bis zur CNC-Programmierung bei F-List.">
+<title>Werdegang — Yannick Reiter</title>
+<meta name="description" content="Beruflicher Werdegang von Yannick Reiter — von der Fachschule Mödling über Puchegger &amp; Jilg bis zur CNC-Programmierung bei F-List.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,33 +15,35 @@
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <header class="site-header">
-  <a href="index.html" class="logo">YR<span class="logo-dot">.</span></a>
-  <nav class="main-nav" aria-label="Hauptnavigation">
-    <a href="index.html">Start</a>
-    <a href="ueber-mich.html">Über mich</a>
-    <a href="werdegang.html" aria-current="page">Werdegang</a>
-    <a href="skills.html">Skills</a>
-    <a href="kontakt.html">Kontakt</a>
-  </nav>
-  <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-shell">
+    <a href="index.html" class="logo"><span class="logo-mark">YR</span>Yannick Reiter</a>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a href="index.html">Start</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="werdegang.html" aria-current="page">Werdegang</a>
+      <a href="skills.html">Skills</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <main id="main">
 
   <section class="page-hero">
-    <p class="eyebrow">⟡ Werdegang</p>
-    <h1>Schritt für<br>Schritt entlang<br>der Maßlinie.</h1>
-    <p class="lede">Eine durchgängige Entwicklung in der industriellen Fertigung - von der Lehre über die Teamleitung bis zur CNC-Programmierung.</p>
+    <span class="eyebrow" data-reveal>Werdegang</span>
+    <h1 data-reveal data-delay="80">Schritt für Schritt entlang der Maßlinie.</h1>
+    <p class="lede" data-reveal data-delay="160">Eine durchgängige Entwicklung in der industriellen Fertigung — von der Lehre über die Teamleitung bis zur CNC-Programmierung.</p>
   </section>
 
   <section class="content-section">
-    <span class="section-label">Berufserfahrung</span>
+    <span class="section-label" data-reveal>Berufserfahrung</span>
     <div class="timeline">
 
-      <div class="timeline-item">
-        <span class="timeline-date">2019 - heute</span>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2019 — heute</span>
         <h3>CNC-Programmierer</h3>
         <p class="company">F-List GmbH · Thomasberg</p>
         <ul>
@@ -56,8 +58,8 @@
         </div>
       </div>
 
-      <div class="timeline-item">
-        <span class="timeline-date">2013 - 2019</span>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2013 — 2019</span>
         <h3>Teamleiter CNC</h3>
         <p class="company">F-List GmbH · Thomasberg</p>
         <ul>
@@ -72,8 +74,8 @@
         </div>
       </div>
 
-      <div class="timeline-item">
-        <span class="timeline-date">2011 - 2013</span>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2011 — 2013</span>
         <h3>CNC-Maschinist</h3>
         <p class="company">F-List GmbH · Thomasberg</p>
         <ul>
@@ -86,8 +88,8 @@
         </div>
       </div>
 
-      <div class="timeline-item">
-        <span class="timeline-date">2008 - 2011</span>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2008 — 2011</span>
         <h3>Tischler / CNC-Maschinist</h3>
         <p class="company">Puchegger &amp; Jilg GmbH</p>
         <ul>
@@ -103,14 +105,11 @@
     </div>
   </section>
 
-  <div class="bp-divider" aria-hidden="true"><span>Ausbildung</span></div>
-
   <section class="content-section">
-    <span class="section-label">Ausbildung</span>
+    <span class="section-label" data-reveal>Ausbildung</span>
     <div class="timeline">
-
-      <div class="timeline-item">
-        <span class="timeline-date">2004 - 2008</span>
+      <div class="timeline-item" data-reveal>
+        <span class="timeline-date">2004 — 2008</span>
         <h3>Fachschule für Innenraumgestaltung und Möbelbau</h3>
         <p class="company">HTL Mödling</p>
         <ul>
@@ -118,7 +117,16 @@
           <li>Grundlage für den weiteren Weg in der industriellen Fertigung</li>
         </ul>
       </div>
+    </div>
+  </section>
 
+  <section class="cta">
+    <div class="cta-inner">
+      <div data-reveal>
+        <span class="eyebrow">Nächster Schritt</span>
+        <h2>Den ganzen Werdegang als PDF?</h2>
+      </div>
+      <a href="kontakt.html" class="btn-brass" data-reveal data-delay="100">Zum Kontakt &amp; Lebenslauf →</a>
     </div>
   </section>
 
@@ -126,7 +134,7 @@
 
 <footer class="site-footer">
   <p>© 2026 Yannick Reiter</p>
-  <a href="kontakt.html">Kontakt →</a>
+  <span class="foot-mono">Thomasberg · Neunkirchen</span>
 </footer>
 
 <script src="script.js"></script>
