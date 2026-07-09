@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kontakt - Yannick Reiter</title>
-<meta name="description" content="Kontakt zu Yannick Reiter - Telefon, E-Mail und Lebenslauf als PDF zum Download.">
+<title>Kontakt — Yannick Reiter</title>
+<meta name="description" content="Kontakt zu Yannick Reiter — Telefon, E-Mail und Lebenslauf als PDF zum Download.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,700;125,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,31 +15,33 @@
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <header class="site-header">
-  <a href="index.html" class="logo">YR<span class="logo-dot">.</span></a>
-  <nav class="main-nav" aria-label="Hauptnavigation">
-    <a href="index.html">Start</a>
-    <a href="ueber-mich.html">Über mich</a>
-    <a href="werdegang.html">Werdegang</a>
-    <a href="skills.html">Skills</a>
-    <a href="kontakt.html" aria-current="page">Kontakt</a>
-  </nav>
-  <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
+  <div class="nav-shell">
+    <a href="index.html" class="logo"><span class="logo-mark">YR</span>Yannick Reiter</a>
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a href="index.html">Start</a>
+      <a href="ueber-mich.html">Über mich</a>
+      <a href="werdegang.html">Werdegang</a>
+      <a href="skills.html">Skills</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+    </nav>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
 <main id="main">
-  
+
   <section class="page-hero">
-    <p class="eyebrow">⟡ Kontakt</p>
-     <h1>Bereit für den<br>nächsten Schritt.</h1>
-    <p class="lede">Am einfachsten erreichen Sie mich telefonisch oder per E-Mail. Der Lebenslauf steht zum direkten Download bereit.</p>
+    <span class="eyebrow" data-reveal>Kontakt</span>
+    <h1 data-reveal data-delay="80">Sprechen wir.</h1>
+    <p class="lede" data-reveal data-delay="160">Am einfachsten erreichen Sie mich telefonisch oder per E-Mail. Der Lebenslauf steht zum direkten Download bereit.</p>
   </section>
 
   <section class="content-section">
     <div class="contact-grid">
 
-      <div class="contact-card">
+      <div class="contact-card" data-reveal>
         <div class="contact-item">
           <span class="contact-label">Telefon</span>
           <span class="contact-value"><a href="tel:+436644323326">+43 664 4323326</a></span>
@@ -54,12 +56,10 @@
         </div>
       </div>
 
-      <div class="cv-card">
+      <div class="cv-card" data-reveal data-delay="100">
         <h3>Lebenslauf</h3>
-        <p>Vollständiger Lebenslauf als PDF - Werdegang, Kenntnisse und Ausbildung im Überblick.</p>
-        <a href="Lebenslauf_Yannick_Reiter.pdf" class="btn-cv" download>
-          ⬇ Lebenslauf herunterladen
-        </a>
+        <p>Vollständiger Lebenslauf als PDF — Werdegang, Kenntnisse und Ausbildung im Überblick.</p>
+        <a href="Lebenslauf_Yannick_Reiter.pdf" class="btn-cv" download>⬇ Lebenslauf herunterladen</a>
       </div>
 
     </div>
