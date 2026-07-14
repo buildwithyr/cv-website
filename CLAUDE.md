@@ -63,7 +63,6 @@ Zwei Breakpoints:
 
 ## Bekannte Offene Baustellen
 
-- **Foto-Placeholder** auf `ueber-mich.html` ist noch ein Dashed-Box-Platzhalter — kein echtes Foto vorhanden.
 - Kein Analytics, kein Cookie-Banner, kein Kontaktformular (nur statische Kontaktangaben).
 
 ## Was NICHT ohne Rückfrage ändern
