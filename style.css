@@ -640,6 +640,104 @@ img { max-width: 100%; display: block; }
 
 .btn-cv:hover { background: var(--brass-light); transform: translateY(-1px); }
 
+.tel-link { cursor: pointer; }
+
+/* Kontaktformular */
+.contact-form-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2.25rem;
+  margin-top: 1.5rem;
+}
+
+.contact-form-card h3 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: -0.01em;
+  color: var(--wood-dark);
+}
+
+.contact-form-card > p {
+  font-size: 0.95rem;
+  color: var(--ink);
+  opacity: 0.8;
+  margin-top: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-row label {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--brass);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.form-row input,
+.form-row textarea {
+  font: inherit;
+  font-size: 0.95rem;
+  color: var(--wood-dark);
+  background: var(--oak-light);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.75rem 1rem;
+  resize: vertical;
+}
+
+.form-row input:focus,
+.form-row textarea:focus {
+  outline: 2px solid var(--wood-dark);
+  outline-offset: 1px;
+}
+
+.form-honeypot {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.form-submit {
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  min-height: 1.2em;
+}
+
+.form-status-ok { color: #3E6B4F; }
+.form-status-error { color: #A3423C; }
+
 /* ============================================
    PRIVAT (Abseits der Arbeit)
    ============================================ */

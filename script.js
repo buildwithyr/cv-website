@@ -55,3 +55,78 @@ document.addEventListener('DOMContentLoaded', function () {
     if (next) next.addEventListener('click', function () { scrollByDir(1); });
   });
 });
+
+// Telefonnummer-Reveal: Nummer wird erst beim Klick aus dem umgekehrten String gebaut
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.tel-link').forEach(function (link) {
+    link.addEventListener('click', function (event) {
+      event.preventDefault();
+
+      var reversed = link.getAttribute('data-tel-rev');
+      if (!reversed) return;
+
+      var number = reversed.split('').reverse().join('');
+      var formatted = number.replace(/^(\+\d{2})(\d{3})(\d{7})$/, '$1 $2 $3');
+
+      link.textContent = formatted;
+      link.href = 'tel:' + number;
+    });
+  });
+});
+
+// Kontaktformular: Absenden per fetch, Honeypot-Check, Status-Meldung
+document.addEventListener('DOMContentLoaded', function () {
+  var form = document.getElementById('contact-form');
+  if (!form) return;
+
+  var status = form.querySelector('.form-status');
+  var submitBtn = form.querySelector('.form-submit');
+  var honeypot = form.querySelector('.form-honeypot');
+
+  function setStatus(message, isError) {
+    if (!status) return;
+    status.textContent = message;
+    status.classList.toggle('form-status-ok', !isError && !!message);
+    status.classList.toggle('form-status-error', !!isError);
+  }
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    if (honeypot && honeypot.value) {
+      form.reset();
+      setStatus('Danke für deine Nachricht! Ich melde mich zeitnah zurück.', false);
+      return;
+    }
+
+    var originalLabel = submitBtn ? submitBtn.textContent : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet...';
+    }
+    setStatus('', false);
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (response) {
+        if (response.ok) {
+          form.reset();
+          setStatus('Danke für deine Nachricht! Ich melde mich zeitnah zurück.', false);
+        } else {
+          setStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut.', true);
+        }
+      })
+      .catch(function () {
+        setStatus('Da ist etwas schiefgelaufen. Bitte versuch es erneut.', true);
+      })
+      .finally(function () {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      });
+  });
+});
