@@ -530,25 +530,21 @@ img { max-width: 100%; display: block; }
   align-items: start;
 }
 
-.photo-placeholder {
+.about-photo {
   aspect-ratio: 3/4;
-  background: var(--oak-light);
   border: 1px solid var(--line-strong);
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.6rem;
-  color: var(--muted);
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 1rem;
+  overflow: hidden;
+  background: var(--oak-light);
+  box-shadow: var(--shadow);
 }
 
-.photo-placeholder svg { width: 44px; height: 44px; opacity: 0.45; }
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 
 .about-text p {
   margin-bottom: 1.25rem;
@@ -888,7 +884,7 @@ img { max-width: 100%; display: block; }
   .preview-cards { grid-template-columns: 1fr; padding-top: 4rem; padding-bottom: 4rem; }
   .skills-grid { grid-template-columns: 1fr; }
   .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-  .photo-placeholder { max-width: 240px; }
+  .about-photo { max-width: 240px; }
   .contact-grid { grid-template-columns: 1fr; }
 }
 
