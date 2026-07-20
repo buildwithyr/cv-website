@@ -137,16 +137,22 @@ img { max-width: 100%; display: block; }
 }
 
 .logo {
-  display: inline-flex; align-items: center; gap: 0.7rem;
+  display: inline-flex; align-items: center;
   font-family: var(--font-display);
   font-weight: 700; font-size: 1.05rem; letter-spacing: -0.01em;
   color: var(--ink);
 }
-.logo-mark {
-  display: inline-flex; align-items: center; justify-content: center;
-  width: 34px; height: 34px; border-radius: 9px;
-  background: var(--ink); color: var(--bg);
-  font-family: var(--font-display); font-weight: 700; font-size: 0.82rem;
+
+.logo-y, .logo-r { font-weight: 700; }
+
+.logo-fade {
+  display: inline-block; overflow: hidden; white-space: nowrap;
+  max-width: 90px; opacity: 1; filter: blur(0);
+  transition: max-width 0.45s ease, opacity 0.3s ease, filter 0.35s ease;
+}
+
+.site-header.is-scrolled .logo-fade {
+  max-width: 0; opacity: 0; filter: blur(4px);
 }
 
 .main-nav { display: flex; gap: 0.35rem; }

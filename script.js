@@ -101,3 +101,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (next) next.addEventListener('click', function () { scrollDir(1); });
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  var header = document.querySelector('.site-header');
+  if (!header) return;
+  var threshold = 24;
+  function updateHeaderState() {
+    header.classList.toggle('is-scrolled', window.scrollY > threshold);
+  }
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+});
