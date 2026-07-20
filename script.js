@@ -187,3 +187,42 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 });
+
+/* ---------- Profilfoto: an Textspalte gepinnt (JS statt native sticky) ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+  var layout = document.querySelector('.about-layout');
+  var photo = document.querySelector('.about-photo');
+  if (!layout || !photo) return;
+
+  var isMobile = window.matchMedia('(max-width: 900px)').matches;
+
+  function getTopOffset() {
+    return isMobile ? 80 : 96;
+  }
+
+  function update() {
+    var layoutRect = layout.getBoundingClientRect();
+    var top = getTopOffset();
+    var photoHeight = photo.offsetHeight;
+
+    if (layoutRect.top > top) {
+      photo.classList.remove('is-pinned', 'is-pinned-bottom');
+      photo.style.left = '';
+    } else if (layoutRect.bottom < top + photoHeight) {
+      photo.classList.remove('is-pinned');
+      photo.classList.add('is-pinned-bottom');
+      photo.style.left = '';
+    } else {
+      photo.classList.add('is-pinned');
+      photo.classList.remove('is-pinned-bottom');
+      if (!isMobile) photo.style.left = layoutRect.left + 'px';
+    }
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', function () {
+    isMobile = window.matchMedia('(max-width: 900px)').matches;
+    update();
+  });
+  update();
+});

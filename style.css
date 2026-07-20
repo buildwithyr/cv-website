@@ -444,13 +444,20 @@ img { max-width: 100%; display: block; }
 /* ============================================================
    ABOUT
    ============================================================ */
-.about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; }
+.about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; position: relative; }
 .about-photo {
-  position: sticky; top: 6rem;
+  width: 320px;
   aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden;
   border: 1px solid var(--line); background: var(--surface); box-shadow: var(--shadow);
 }
-.about-photo img { width: 100%; height: 100%; object-fit: cover; }
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Pin-Zustände werden per JS gesetzt (script.js) statt native position:sticky —
+   iOS Safari sticht sticky in Grid-Layouts unzuverlässig aus. */
+.about-photo.is-pinned,
+.about-photo.is-pinned-bottom { transition: none; }
+.about-photo.is-pinned { position: fixed; top: 6rem; z-index: 5; }
+.about-photo.is-pinned-bottom { position: absolute; left: 0; right: 0; bottom: 0; top: auto; width: 320px; }
 .photo-placeholder {
   width: 100%; height: 100%; display: flex; flex-direction: column;
   align-items: center; justify-content: center; gap: 0.6rem;
@@ -607,7 +614,9 @@ img { max-width: 100%; display: block; }
   .preview-cards { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-  .about-photo { position: sticky; top: 5rem; max-width: 280px; margin: 0 auto; }
+  .about-photo { width: 100%; max-width: 280px; margin: 0 auto; }
+  .about-photo.is-pinned { left: 50%; top: 5rem; width: 280px; transform: translateX(-50%); }
+  .about-photo.is-pinned-bottom { left: 50%; right: auto; width: 280px; transform: translateX(-50%); }
   .contact-grid { grid-template-columns: 1fr; }
   .cta-inner { padding: 2.75rem 2rem; }
 }
