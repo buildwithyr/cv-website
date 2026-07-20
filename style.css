@@ -625,8 +625,6 @@ img { max-width: 100%; display: block; }
   .skills-grid { grid-template-columns: 1fr; }
   .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-photo { width: 100%; max-width: 280px; margin: 0 auto; }
-  .about-photo.is-pinned { left: 50%; top: 5rem; width: 280px; transform: translateX(-50%); }
-  .about-photo.is-pinned-bottom { left: 50%; right: auto; width: 280px; transform: translateX(-50%); }
   .contact-grid { grid-template-columns: 1fr; }
   .cta-inner { padding: 2.75rem 2rem; }
 }

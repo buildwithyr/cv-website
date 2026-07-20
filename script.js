@@ -194,15 +194,17 @@ document.addEventListener('DOMContentLoaded', function () {
   var photo = document.querySelector('.about-photo');
   if (!layout || !photo) return;
 
-  var isMobile = window.matchMedia('(max-width: 900px)').matches;
-
-  function getTopOffset() {
-    return isMobile ? 80 : 96;
-  }
+  var mobileQuery = window.matchMedia('(max-width: 900px)');
 
   function update() {
+    if (mobileQuery.matches) {
+      photo.classList.remove('is-pinned', 'is-pinned-bottom');
+      photo.style.left = '';
+      return;
+    }
+
     var layoutRect = layout.getBoundingClientRect();
-    var top = getTopOffset();
+    var top = 96;
     var photoHeight = photo.offsetHeight;
 
     if (layoutRect.top > top) {
@@ -215,14 +217,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       photo.classList.add('is-pinned');
       photo.classList.remove('is-pinned-bottom');
-      if (!isMobile) photo.style.left = layoutRect.left + 'px';
+      photo.style.left = layoutRect.left + 'px';
     }
   }
 
   window.addEventListener('scroll', update, { passive: true });
-  window.addEventListener('resize', function () {
-    isMobile = window.matchMedia('(max-width: 900px)').matches;
-    update();
-  });
+  window.addEventListener('resize', update);
   update();
 });
