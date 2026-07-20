@@ -609,6 +609,7 @@ img { max-width: 100%; display: block; }
 
   .hero { min-height: 84vh; }
   .hero-inner { padding-top: 7rem; }
+  .hero-media { background-position: 78% center; }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .profil-card { grid-template-columns: 1fr; gap: 2.25rem; padding: 2.5rem; }
   .preview-cards { grid-template-columns: 1fr; }
@@ -625,4 +626,5 @@ img { max-width: 100%; display: block; }
   .stats { grid-template-columns: 1fr 1fr; }
   .stat { padding: 1.35rem; }
   .stat-number { font-size: 2.3rem; }
+  .hero-media { background-position: 85% center; }
 }
