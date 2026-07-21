@@ -501,6 +501,33 @@ img { max-width: 100%; display: block; }
 .carousel-btn:hover { border-color: var(--ink); transform: translateY(-1px); }
 @media (prefers-reduced-motion: reduce) { .carousel-track { scroll-behavior: auto; } }
 
+/* Scroll-Jack (Apple-Stil): Höhe/position:sticky/transform werden nur gesetzt,
+   wenn script.js die Bedingungen (Desktop, Maus/Trackpad, kein reduced-motion)
+   als erfüllt erkennt und die Klasse "js-pin-enabled" setzt. Ohne JS oder auf
+   Mobile bleiben das die stilneutralen Hüllen und das normale Wisch-Karussell
+   darunter greift unverändert. */
+.carousel-scrollzone { position: relative; }
+.carousel-scrollzone.js-pin-enabled .carousel-pin { position: sticky; top: 6rem; }
+.carousel-viewport { flex: 1; min-width: 0; }
+.carousel-scrollzone.js-pin-enabled .carousel-viewport { overflow: hidden; }
+.carousel-scrollzone.js-pin-enabled .carousel-track {
+  flex: none; width: max-content; overflow: visible;
+  scroll-snap-type: none; will-change: transform;
+}
+.carousel-scrollzone.js-pin-enabled .carousel-slide { scroll-snap-align: none; }
+.carousel-scrollzone.js-pin-enabled .carousel-btn { display: none; }
+
+/* Sicherheitsnetz: falls JS aus irgendeinem Grund nicht läuft, aber die
+   Klasse dennoch am Element hängen bleibt (z. B. bei Resize-Race), nie pinnen. */
+@media (prefers-reduced-motion: reduce), (pointer: coarse), (max-width: 899px) {
+  .carousel-scrollzone { height: auto !important; }
+  .carousel-scrollzone .carousel-pin { position: static !important; }
+  .carousel-scrollzone .carousel-viewport { overflow: visible !important; }
+  .carousel-scrollzone .carousel-track {
+    transform: none !important; flex: 1 !important; width: auto !important; overflow-x: auto !important;
+  }
+}
+
 .video-embed {
   margin-top: 2.75rem; max-width: 760px; aspect-ratio: 16 / 9;
   border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--line); background: var(--surface);
