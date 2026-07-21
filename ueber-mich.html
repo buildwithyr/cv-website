@@ -42,8 +42,14 @@
   <section class="content-section">
     <div class="about-layout">
 
-      <div class="about-photo" data-reveal>
-        <img src="bilder/yannick-portrait.jpg" alt="Yannick Reiter" loading="lazy">
+      <!-- .about-photo-slot hält die Höhe des Fotos dauerhaft im Grid-Flow. Wenn das
+           Foto beim Scrollen per JS auf position:fixed/absolute geht (script.js), fällt
+           es aus dem Flow - der Slot verhindert, dass die Grid-Spalte kollabiert und die
+           gemessene Layout-Höhe springt (sonst möglicher Mess-Feedback-Loop beim Pinnen). -->
+      <div class="about-photo-slot">
+        <div class="about-photo" data-reveal>
+          <img src="bilder/yannick-portrait.jpg" alt="Yannick Reiter" loading="lazy">
+        </div>
       </div>
 
       <div class="about-text" data-reveal data-delay="100">

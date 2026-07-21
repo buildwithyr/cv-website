@@ -445,6 +445,9 @@ img { max-width: 100%; display: block; }
    ABOUT
    ============================================================ */
 .about-layout { display: grid; grid-template-columns: 320px 1fr; gap: 4rem; align-items: start; position: relative; }
+/* Platzhalter mit exakt der Fotohöhe (gleiche width + aspect-ratio). Bleibt immer im
+   Grid-Flow, damit die Spaltenhöhe stabil ist, während das Foto darin per JS pinnt. */
+.about-photo-slot { width: 320px; aspect-ratio: 3 / 4; }
 .about-photo {
   width: 320px;
   aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden;
@@ -514,7 +517,14 @@ img { max-width: 100%; display: block; }
   flex: none; width: max-content; overflow: visible;
   scroll-snap-type: none; will-change: transform;
 }
-.carousel-scrollzone.js-pin-enabled .carousel-slide { scroll-snap-align: none; }
+/* Feste Slide-Breite im Pin-Modus: Die Basis-Regel nutzt "flex: 0 0 min(82%, 380px)".
+   Sobald .carousel-track "width: max-content" bekommt, ist die Prozentangabe (82%)
+   aber ein Zirkelbezug (Prozent von einer Breite, die erst aus genau diesen Slides
+   entsteht) - Browser lösen das uneinheitlich auf, teils schon vor dem finalen Layout
+   zu schmaleren Slides. Das verfälschte die früh gemessene Set-Breite (setWidth) in
+   script.js und damit die translateX-Rechnung -> Bilder verrutschten. Fixer px-Wert
+   entfernt den Zirkelbezug und macht die Messung deterministisch. */
+.carousel-scrollzone.js-pin-enabled .carousel-slide { flex: 0 0 380px; scroll-snap-align: none; }
 .carousel-scrollzone.js-pin-enabled .carousel-btn { display: none; }
 
 /* Sicherheitsnetz: falls JS aus irgendeinem Grund nicht läuft, aber die
@@ -643,6 +653,8 @@ img { max-width: 100%; display: block; }
   .skills-grid { grid-template-columns: 1fr; }
   .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
   .about-text { grid-column: 1; }
+  /* Auf Mobile trägt der Slot die Box (zentriert, max. 280px); das Foto füllt ihn. */
+  .about-photo-slot { width: 100%; max-width: 280px; margin: 0 auto; }
   .about-photo { width: 100%; max-width: 280px; margin: 0 auto; }
   .about-photo.is-pinned { left: 50%; top: 5rem; width: 280px; transform: translateX(-50%); }
   .about-photo.is-pinned-bottom { left: 50%; right: auto; width: 280px; transform: translateX(-50%); }

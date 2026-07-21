@@ -202,6 +202,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   evaluate();
 
+  // Nachmessen, sobald alle Ressourcen (Bilder, Schriften) geladen sind: measure()
+  // in enable() läuft bereits bei DOMContentLoaded, wo das Layout noch nicht endgültig
+  // steht und die Set-Breite zu klein ausfallen kann. Ein zweiter measure()-Lauf
+  // korrigiert eine solche zu frühe Messung.
+  window.addEventListener('load', function () {
+    if (active) { measure(); update(); }
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { if (active) { measure(); update(); } });
+  }
+
   // matchMedia-Listener statt reinem resize: reagiert auch auf Trackpad/Maus-
   // Wechsel oder geänderte "reduced motion"-Einstellung ohne Reload.
   desktopQuery.addEventListener('change', evaluate);
