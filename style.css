@@ -605,17 +605,20 @@ img { max-width: 100%; display: block; }
   }
   .main-nav.open a { padding: 0.85rem 1rem; }
 
-  .hero { min-height: 84vh; }
-  .hero-inner { padding-top: 7rem; padding-bottom: 10rem; }
-  .hero-media { background-image: url("hero-mobile.webp"); background-position: center top; }
+  .hero {
+    margin-top: 0; min-height: 0;
+    display: block;
+  }
+  .hero-media {
+    position: relative; inset: auto;
+    height: 58vh; min-height: 340px;
+    background-image: url("hero-mobile.webp"); background-position: center 22%;
+  }
+  .hero-inner { position: relative; padding: 2.25rem var(--gutter) 2.5rem; }
   .hero::after {
-    background:
-      linear-gradient(180deg,
-        rgba(245, 242, 236, 0.72) 0%,
-        rgba(245, 242, 236, 0.58) 32%,
-        rgba(245, 242, 236, 0.42) 58%,
-        rgba(245, 242, 236, 0.15) 72%,
-        rgba(245, 242, 236, 0.00) 85%);
+    background: linear-gradient(180deg,
+      rgba(245, 242, 236, 0.00) 88%,
+      rgba(245, 242, 236, 1) 100%);
   }
   .stats { grid-template-columns: repeat(2, 1fr); }
   .profil-card { grid-template-columns: 1fr; gap: 2.25rem; padding: 2.5rem; }
