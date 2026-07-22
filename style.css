@@ -611,10 +611,17 @@ img { max-width: 100%; display: block; }
     padding: 6.5rem 0 3.5rem;
   }
   .hero-media {
-    opacity: 0.28;
+    opacity: 0.55; filter: blur(1.5px);
     background-image: url("hero-mobile.webp"); background-position: center 18%;
   }
   .hero-inner { padding: 0 var(--gutter); }
+  .hero-inner::before {
+    content: ""; position: absolute; z-index: -1; pointer-events: none;
+    inset: -1.5rem -1.25rem 45% -1.25rem;
+    background: radial-gradient(60% 80% at 30% 20%,
+      rgba(245, 242, 236, 0.82) 0%, rgba(245, 242, 236, 0) 75%);
+    filter: blur(6px);
+  }
   .hero::after {
     background: linear-gradient(180deg,
       rgba(245, 242, 236, 0) 40%,
