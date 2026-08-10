@@ -607,6 +607,8 @@ img { max-width: 100%; display: block; }
 .form-status-ok { color: #3E6B4F; }
 .form-status-error { color: #A3423C; }
 
+.form-privacy-note { margin-top: 1rem; font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
 /* ============================================================
    FOOTER
    ============================================================ */
