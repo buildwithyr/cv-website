@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
+   damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
+(function () {
+  var ua = navigator.userAgent;
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
+  if (uaLooksDesktop) {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
+  }
+})();
+</script>
 <title>Yannick Reiter — Tischler &amp; CNC-Programmierer</title>
 <meta name="description" content="Yannick Reiter — Tischler und CNC-Programmierer bei F-List. Vom Maschinisten über die Teamleitung zur CNC-Programmierung mit CATIA. Werdegang, Skills und Kontakt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
