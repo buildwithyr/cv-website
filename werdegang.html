@@ -3,6 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script>
+/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
+   damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
+(function () {
+  var ua = navigator.userAgent;
+  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
+  if (uaLooksDesktop) {
+    var vp = document.querySelector('meta[name="viewport"]');
+    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
+  }
+})();
+</script>
 <title>Werdegang — Yannick Reiter</title>
 <meta name="description" content="Beruflicher Werdegang von Yannick Reiter — von der Fachschule Mödling über Puchegger &amp; Jilg bis zur CNC-Programmierung bei F-List.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
