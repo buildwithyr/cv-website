@@ -645,7 +645,7 @@ img { max-width: 100%; display: block; }
   }
   .hero-media {
     opacity: 0.55; filter: blur(1.5px);
-    background-image: url("hero-mobile.webp"); background-position: center 18%;
+    background-position: 76% 48%;
   }
   .hero-inner { padding: 0 var(--gutter); }
   .hero-inner::before {
