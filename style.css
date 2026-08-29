@@ -643,10 +643,6 @@ img { max-width: 100%; display: block; }
     align-items: flex-start;
     padding: 6.5rem 0 3.5rem;
   }
-  .hero-media {
-    opacity: 0.55; filter: blur(1.5px);
-    background-position: 76% 48%;
-  }
   .hero-inner { padding: 0 var(--gutter); }
   .hero-inner::before {
     content: ""; position: absolute; z-index: -1; pointer-events: none;
