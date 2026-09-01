@@ -210,6 +210,9 @@ img { max-width: 100%; display: block; }
   position: absolute; inset: 0; z-index: 0;
   background: url("hero-cnc.webp") center 42% / cover no-repeat;
 }
+/* Zweiter, geblurrter Bild-Layer nur für Mobile (siehe @media 900px) —
+   liegt oben und wird per mask-image gradient über die Gravur geblendet. */
+.hero-media-blur { display: none; }
 .hero::after {
   content: ""; position: absolute; inset: 0; z-index: 1;
   background:
@@ -651,9 +654,21 @@ img { max-width: 100%; display: block; }
       rgba(245, 242, 236, 0.82) 0%, rgba(245, 242, 236, 0) 75%);
     filter: blur(6px);
   }
+  /* Gravur (oben) bleibt scharf; Blur blendet erst Richtung Textbereich (unten) ein. */
+  .hero-media-blur {
+    display: block;
+    position: absolute; inset: 0; z-index: 0;
+    background: url("hero-cnc.webp") center 42% / cover no-repeat;
+    filter: blur(9px);
+    -webkit-mask-image: linear-gradient(to bottom,
+      transparent 0%, transparent 32%, rgba(0, 0, 0, 0.6) 52%, #000 72%);
+    mask-image: linear-gradient(to bottom,
+      transparent 0%, transparent 32%, rgba(0, 0, 0, 0.6) 52%, #000 72%);
+  }
   .hero::after {
     background: linear-gradient(180deg,
-      rgba(245, 242, 236, 0) 40%,
+      rgba(245, 242, 236, 0) 30%,
+      rgba(245, 242, 236, 0.55) 55%,
       rgba(245, 242, 236, 1) 78%);
   }
   .stats { grid-template-columns: repeat(2, 1fr); }
