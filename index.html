@@ -1,161 +1,202 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      /* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
    damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
-(function () {
-  var ua = navigator.userAgent;
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
-  if (uaLooksDesktop) {
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
-  }
-})();
-</script>
-<title>Yannick Reiter — Tischler &amp; CNC-Programmierer</title>
-<meta name="description" content="Yannick Reiter — Tischler und CNC-Programmierer bei F-List. Vom Maschinisten über die Teamleitung zur CNC-Programmierung mit CATIA. Werdegang, Skills und Kontakt.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
-</head>
-<body>
+      (function () {
+        var ua = navigator.userAgent;
+        var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
+        if (uaLooksDesktop) {
+          var vp = document.querySelector('meta[name="viewport"]');
+          if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
+        }
+      })();
+    </script>
+    <title>Yannick Reiter — Tischler &amp; CNC-Programmierer</title>
+    <meta
+      name="description"
+      content="Yannick Reiter — Tischler und CNC-Programmierer bei F-List. Vom Maschinisten über die Teamleitung zur CNC-Programmierung mit CATIA. Werdegang, Skills und Kontakt."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <noscript
+      ><style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
-<a href="#main" class="skip-link">Zum Inhalt springen</a>
-
-<header class="site-header">
-  <div class="nav-shell">
-    <a href="index.html" class="logo" aria-label="Yannick Reiter - Startseite"><span class="logo-y">Y</span><span class="logo-fade">annick&nbsp;</span><span class="logo-r">R</span><span class="logo-fade">eiter</span></a>
-    <nav class="main-nav" aria-label="Hauptnavigation">
-      <a href="index.html" aria-current="page">Start</a>
-      <a href="ueber-mich.html">Über mich</a>
-      <a href="werdegang.html">Werdegang</a>
-      <a href="skills.html">Skills</a>
-      <a href="projekte.html">Projekte</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main id="main">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-media" aria-hidden="true"></div>
-    <div class="hero-media-blur" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="hero-badge" data-reveal><span class="dot"></span>Tischler &amp; CNC-Programmierer</p>
-      <h1 data-reveal data-delay="90">Handwerk trifft CNC-Technik.</h1>
-      <p class="hero-lede" data-reveal data-delay="180">Seit 2011 bei F-List — vom Maschinisten über die Teamleitung bis zur CNC-Programmierung mit CATIA. Präzision ist für mich kein Zufall, sondern Handwerk.</p>
-      <div class="hero-actions" data-reveal data-delay="260">
-        <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
-        <a href="werdegang.html" class="btn btn-ghost">Werdegang ansehen →</a>
+    <header class="site-header">
+      <div class="nav-shell">
+        <a href="index.html" class="logo" aria-label="Yannick Reiter - Startseite"
+          ><span class="logo-y">Y</span><span class="logo-fade">annick&nbsp;</span
+          ><span class="logo-r">R</span><span class="logo-fade">eiter</span></a
+        >
+        <nav class="main-nav" aria-label="Hauptnavigation">
+          <a href="index.html" aria-current="page">Start</a>
+          <a href="ueber-mich.html">Über mich</a>
+          <a href="werdegang.html">Werdegang</a>
+          <a href="skills.html">Skills</a>
+          <a href="projekte.html">Projekte</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- STATS -->
-  <section class="stats" aria-label="Eckdaten">
-    <div class="stat" data-reveal>
-      <span class="stat-number" data-count="15" data-suffix="+">0</span>
-      <span class="stat-label">Jahre Erfahrung</span>
-    </div>
-    <div class="stat" data-reveal data-delay="80">
-      <span class="stat-number" data-count="6">0</span>
-      <span class="stat-label">Jahre Teamleitung</span>
-    </div>
-    <div class="stat" data-reveal data-delay="160">
-      <span class="stat-number">2019</span>
-      <span class="stat-label">Start CNC-Programmierung</span>
-    </div>
-    <div class="stat" data-reveal data-delay="240">
-      <span class="stat-number">C1</span>
-      <span class="stat-label">Englisch</span>
-    </div>
-  </section>
-
-  <!-- PROFIL -->
-  <section class="profil">
-    <div class="profil-card" data-reveal>
-      <div>
-        <span class="eyebrow">Profil</span>
-        <h2>Werkstatt und Bildschirm — beide Seiten im Griff.</h2>
-        <p class="body">Konstruktionsdaten werden bei mir zu geprüften, fertigungsreifen Bearbeitungsprogrammen — Praxis an der Maschine inklusive. Abseits der Arbeit beschäftige ich mich mit Drohnenfotografie, eigenen digitalen Projekten und bin gerne mit meinem Jack Russell Oskar unterwegs.</p>
-      </div>
-      <div class="profil-quote">
-        <p>„Ein gutes Programm spart der ganzen Schicht Arbeit — und dem Bauteil den Nacharbeitsschritt."</p>
-        <div class="profil-attr">
-          <span class="avatar">YR</span>
-          <div>
-            <div class="name">Yannick Reiter</div>
-            <div class="role">CNC-Programmierer · F-List</div>
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-media" aria-hidden="true"></div>
+        <div class="hero-media-blur" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="hero-badge" data-reveal>
+            <span class="dot"></span>Tischler &amp; CNC-Programmierer
+          </p>
+          <h1 data-reveal data-delay="90">Handwerk trifft CNC-Technik.</h1>
+          <p class="hero-lede" data-reveal data-delay="180">
+            Seit 2011 bei F-List — vom Maschinisten über die Teamleitung bis zur CNC-Programmierung
+            mit CATIA. Präzision ist für mich kein Zufall, sondern Handwerk.
+          </p>
+          <div class="hero-actions" data-reveal data-delay="260">
+            <a href="kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
+            <a href="werdegang.html" class="btn btn-ghost">Werdegang ansehen →</a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- PREVIEW CARDS -->
-  <section class="preview-cards">
-    <a href="werdegang.html" class="preview-card" data-reveal>
-      <span class="preview-tag">01 · Werdegang</span>
-      <h3>Vom Maschinisten zum Programmierer</h3>
-      <p>Bei Puchegger &amp; Jilg begonnen, bei F-List zum CNC-Programmierer mit Führungserfahrung gewachsen.</p>
-    </a>
-    <a href="skills.html" class="preview-card" data-reveal data-delay="90">
-      <span class="preview-tag">02 · Skills</span>
-      <h3>CATIA, NC Hops &amp; Co.</h3>
-      <p>CNC-Programmierung, Lean-Methoden wie Kaizen und 5S, Teamführung — und der Umgang mit modernen Werkzeugen.</p>
-    </a>
-    <a href="ueber-mich.html" class="preview-card" data-reveal data-delay="180">
-      <span class="preview-tag">03 · Über mich</span>
-      <h3>Wer hinter dem Plan steht</h3>
-      <p>Technisch versiert, lösungsorientiert und teamfähig — mit echtem Interesse an besseren Fertigungsmethoden.</p>
-    </a>
-    <a href="projekte.html" class="preview-card" data-reveal data-delay="270">
-      <span class="preview-tag">04 · Projekte</span>
-      <h3>Digitale Ideen für den Alltag</h3>
-      <p>Ich probiere gerne neue Werkzeuge aus und entwickle mit Unterstützung moderner KI eigene kleine Webprojekte – nicht als IT-Experte, sondern aus Neugier und mit einem konkreten praktischen Ziel.</p>
-    </a>
-  </section>
+      <!-- STATS -->
+      <section class="stats" aria-label="Eckdaten">
+        <div class="stat" data-reveal>
+          <span class="stat-number" data-count="15" data-suffix="+">0</span>
+          <span class="stat-label">Jahre Erfahrung</span>
+        </div>
+        <div class="stat" data-reveal data-delay="80">
+          <span class="stat-number" data-count="6">0</span>
+          <span class="stat-label">Jahre Teamleitung</span>
+        </div>
+        <div class="stat" data-reveal data-delay="160">
+          <span class="stat-number">2019</span>
+          <span class="stat-label">Start CNC-Programmierung</span>
+        </div>
+        <div class="stat" data-reveal data-delay="240">
+          <span class="stat-number">C1</span>
+          <span class="stat-label">Englisch</span>
+        </div>
+      </section>
 
-  <!-- SKILLS STRIP -->
-  <section class="skills-strip" data-reveal>
-    <span class="strip-label">Werkzeuge</span>
-    <span class="chip">CATIA</span>
-    <span class="chip">NC Hops</span>
-    <span class="chip">woodWop</span>
-    <span class="chip">CNC-Bearbeitung</span>
-    <span class="chip">Kaizen · 5S</span>
-    <span class="chip">Teamführung</span>
-  </section>
+      <!-- PROFIL -->
+      <section class="profil">
+        <div class="profil-card" data-reveal>
+          <div>
+            <span class="eyebrow">Profil</span>
+            <h2>Werkstatt und Bildschirm — beide Seiten im Griff.</h2>
+            <p class="body">
+              Konstruktionsdaten werden bei mir zu geprüften, fertigungsreifen
+              Bearbeitungsprogrammen — Praxis an der Maschine inklusive. Abseits der Arbeit
+              beschäftige ich mich mit Drohnenfotografie, eigenen digitalen Projekten und bin gerne
+              mit meinem Jack Russell Oskar unterwegs.
+            </p>
+          </div>
+          <div class="profil-quote">
+            <p>
+              „Ein gutes Programm spart der ganzen Schicht Arbeit — und dem Bauteil den
+              Nacharbeitsschritt."
+            </p>
+            <div class="profil-attr">
+              <span class="avatar">YR</span>
+              <div>
+                <div class="name">Yannick Reiter</div>
+                <div class="role">CNC-Programmierer · F-List</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <div class="cta-inner">
-      <div data-reveal>
-        <span class="eyebrow">Kontakt</span>
-        <h2>Reden wir über präzise Fertigung.</h2>
-      </div>
-      <a href="kontakt.html" class="btn-brass" data-reveal data-delay="100">Zum Kontaktformular</a>
-    </div>
-  </section>
+      <!-- PREVIEW CARDS -->
+      <section class="preview-cards">
+        <a href="werdegang.html" class="preview-card" data-reveal>
+          <span class="preview-tag">01 · Werdegang</span>
+          <h3>Vom Maschinisten zum Programmierer</h3>
+          <p>
+            Bei Puchegger &amp; Jilg begonnen, bei F-List zum CNC-Programmierer mit
+            Führungserfahrung gewachsen.
+          </p>
+        </a>
+        <a href="skills.html" class="preview-card" data-reveal data-delay="90">
+          <span class="preview-tag">02 · Skills</span>
+          <h3>CATIA, NC Hops &amp; Co.</h3>
+          <p>
+            CNC-Programmierung, Lean-Methoden wie Kaizen und 5S, Teamführung — und der Umgang mit
+            modernen Werkzeugen.
+          </p>
+        </a>
+        <a href="ueber-mich.html" class="preview-card" data-reveal data-delay="180">
+          <span class="preview-tag">03 · Über mich</span>
+          <h3>Wer hinter dem Plan steht</h3>
+          <p>
+            Technisch versiert, lösungsorientiert und teamfähig — mit echtem Interesse an besseren
+            Fertigungsmethoden.
+          </p>
+        </a>
+        <a href="projekte.html" class="preview-card" data-reveal data-delay="270">
+          <span class="preview-tag">04 · Projekte</span>
+          <h3>Digitale Ideen für den Alltag</h3>
+          <p>
+            Ich probiere gerne neue Werkzeuge aus und entwickle mit Unterstützung moderner KI eigene
+            kleine Webprojekte – nicht als IT-Experte, sondern aus Neugier und mit einem konkreten
+            praktischen Ziel.
+          </p>
+        </a>
+      </section>
 
-</main>
+      <!-- SKILLS STRIP -->
+      <section class="skills-strip" data-reveal>
+        <span class="strip-label">Werkzeuge</span>
+        <span class="chip">CATIA</span>
+        <span class="chip">NC Hops</span>
+        <span class="chip">woodWop</span>
+        <span class="chip">CNC-Bearbeitung</span>
+        <span class="chip">Kaizen · 5S</span>
+        <span class="chip">Teamführung</span>
+      </section>
 
-<footer class="site-footer">
-  <p>© 2026 Yannick Reiter</p>
-  <span class="foot-mono">Thomasberg · Neunkirchen</span>
-</footer>
+      <!-- CTA -->
+      <section class="cta">
+        <div class="cta-inner">
+          <div data-reveal>
+            <span class="eyebrow">Kontakt</span>
+            <h2>Reden wir über präzise Fertigung.</h2>
+          </div>
+          <a href="kontakt.html" class="btn-brass" data-reveal data-delay="100"
+            >Zum Kontaktformular</a
+          >
+        </div>
+      </section>
+    </main>
 
-<script src="script.js"></script>
-</body>
+    <footer class="site-footer">
+      <p>© 2026 Yannick Reiter</p>
+      <span class="foot-mono">Thomasberg · Neunkirchen</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>

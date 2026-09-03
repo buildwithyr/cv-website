@@ -32,17 +32,18 @@ Lebenslauf_Yannick_Reiter.pdf   Direkt verlinkt auf der Kontaktseite
 
 Alle Farben sind CSS Custom Properties in `:root` (oben in `style.css`):
 
-| Token | Wert | Einsatz |
-|---|---|---|
-| `--wood-dark` | `#3D2B1F` | Hauptfarbe, Buttons, Überschriften |
-| `--wood-mid` | `#6B4F3B` | Sekundärtext, Nav-Links |
-| `--oak` | `#E8DCC8` | Card-Hintergründe |
-| `--oak-light` | `#F4EDE0` | Page-Background |
-| `--brass` | `#B08D57` | Akzent, Labels, Divider |
-| `--brass-light` | `#D4B483` | Hover-States |
-| `--ink` | `#2A2A28` | Fließtext |
+| Token           | Wert      | Einsatz                            |
+| --------------- | --------- | ---------------------------------- |
+| `--wood-dark`   | `#3D2B1F` | Hauptfarbe, Buttons, Überschriften |
+| `--wood-mid`    | `#6B4F3B` | Sekundärtext, Nav-Links            |
+| `--oak`         | `#E8DCC8` | Card-Hintergründe                  |
+| `--oak-light`   | `#F4EDE0` | Page-Background                    |
+| `--brass`       | `#B08D57` | Akzent, Labels, Divider            |
+| `--brass-light` | `#D4B483` | Hover-States                       |
+| `--ink`         | `#2A2A28` | Fließtext                          |
 
 **Schriften** (Google Fonts, inline geladen):
+
 - `Archivo` (wdth 125, wght 700/800) — Display/Headlines
 - `Inter` — Body
 - `JetBrains Mono` — Labels, Tags, Mono-Details
@@ -58,6 +59,7 @@ Alle Farben sind CSS Custom Properties in `:root` (oben in `style.css`):
 ## Responsive
 
 Zwei Breakpoints:
+
 - `≤ 860px` — Mobile Nav (Hamburger), einspaltige Layouts
 - `≤ 480px` — Stats auf 2×2
 

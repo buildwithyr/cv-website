@@ -7,13 +7,13 @@ Statische Seite ohne Framework — Vanilla HTML, CSS und JavaScript.
 
 ## Seiten
 
-| Datei | Inhalt |
-|-------|--------|
-| `index.html` | Startseite |
-| `ueber-mich.html` | Über mich (rein fachlich) |
-| `werdegang.html` | Beruflicher Werdegang als Timeline |
-| `skills.html` | Skills & Kenntnisse |
-| `kontakt.html` | Kontakt + Lebenslauf-Download |
+| Datei             | Inhalt                             |
+| ----------------- | ---------------------------------- |
+| `index.html`      | Startseite                         |
+| `ueber-mich.html` | Über mich (rein fachlich)          |
+| `werdegang.html`  | Beruflicher Werdegang als Timeline |
+| `skills.html`     | Skills & Kenntnisse                |
+| `kontakt.html`    | Kontakt + Lebenslauf-Download      |
 
 `Lebenslauf_Yannick_Reiter.pdf` liegt im Repo-Root und wird auf der Kontaktseite verlinkt.
 

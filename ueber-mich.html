@@ -1,117 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      /* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
    damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
-(function () {
-  var ua = navigator.userAgent;
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
-  if (uaLooksDesktop) {
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
-  }
-})();
-</script>
-<title>Über mich — Yannick Reiter</title>
-<meta name="description" content="Über Yannick Reiter — Tischler und CNC-Programmierer mit über 15 Jahren Erfahrung in der industriellen Holz- und Bauteilfertigung bei F-List.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
-</head>
-<body>
+      (function () {
+        var ua = navigator.userAgent;
+        var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+        var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
+        if (uaLooksDesktop) {
+          var vp = document.querySelector('meta[name="viewport"]');
+          if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
+        }
+      })();
+    </script>
+    <title>Über mich — Yannick Reiter</title>
+    <meta
+      name="description"
+      content="Über Yannick Reiter — Tischler und CNC-Programmierer mit über 15 Jahren Erfahrung in der industriellen Holz- und Bauteilfertigung bei F-List."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <noscript
+      ><style>
+        [data-reveal] {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
-<a href="#main" class="skip-link">Zum Inhalt springen</a>
-
-<header class="site-header">
-  <div class="nav-shell">
-    <a href="index.html" class="logo" aria-label="Yannick Reiter - Startseite"><span class="logo-y">Y</span><span class="logo-fade">annick&nbsp;</span><span class="logo-r">R</span><span class="logo-fade">eiter</span></a>
-    <nav class="main-nav" aria-label="Hauptnavigation">
-      <a href="index.html">Start</a>
-      <a href="ueber-mich.html" aria-current="page">Über mich</a>
-      <a href="werdegang.html">Werdegang</a>
-      <a href="skills.html">Skills</a>
-      <a href="projekte.html">Projekte</a>
-      <a href="kontakt.html">Kontakt</a>
-    </nav>
-    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
-
-<main id="main">
-
-  <section class="page-hero">
-    <span class="eyebrow" data-reveal>Über mich</span>
-    <h1 data-reveal data-delay="80">Wer hinter dem Plan steht.</h1>
-    <p class="lede" data-reveal data-delay="160">Was mich antreibt: der Anspruch, Dinge sauber zu Ende zu bringen — egal ob mit den Händen oder am Bildschirm.</p>
-  </section>
-
-  <section class="content-section">
-    <div class="about-layout">
-
-      <div class="about-photo" data-reveal>
-        <img src="bilder/yannick-portrait.jpg" alt="Yannick Reiter" loading="lazy">
+    <header class="site-header">
+      <div class="nav-shell">
+        <a href="index.html" class="logo" aria-label="Yannick Reiter - Startseite"
+          ><span class="logo-y">Y</span><span class="logo-fade">annick&nbsp;</span
+          ><span class="logo-r">R</span><span class="logo-fade">eiter</span></a
+        >
+        <nav class="main-nav" aria-label="Hauptnavigation">
+          <a href="index.html">Start</a>
+          <a href="ueber-mich.html" aria-current="page">Über mich</a>
+          <a href="werdegang.html">Werdegang</a>
+          <a href="skills.html">Skills</a>
+          <a href="projekte.html">Projekte</a>
+          <a href="kontakt.html">Kontakt</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
       </div>
+    </header>
 
-      <div class="about-text" data-reveal data-delay="100">
-        <p>Mein Weg beginnt im klassischen Handwerk: An der Fachschule Mödling habe ich Innenraumgestaltung und Möbelbau gelernt und früh den Anspruch entwickelt, dass ein Werkstück erst dann fertig ist, wenn es dem eigenen Anspruch standhält. Dieser Anspruch begleitet mich bis heute.</p>
-        <p>Seit 2011 bin ich bei der F-List GmbH in Thomasberg. Begonnen habe ich als CNC-Maschinist im Zwei-Schicht-Betrieb, anschließend habe ich über sechs Jahre ein siebenköpfiges Team geleitet. Seit 2019 sitze ich überwiegend am Bildschirm und übersetze Konstruktionsdaten in Bearbeitungsprogramme für die Fertigung.</p>
-        <p>Was mich auszeichnet, ist die Verbindung von Praxis und Technik: Ich weiß aus eigener Erfahrung, worauf es an der Maschine ankommt, und nehme das mit in die Programmierung. Methoden wie Kaizen, 5S und Poka Yoke sind für mich keine Schlagworte, sondern Teil des Tagesgeschäfts — sie helfen, Abläufe sauber, sicher und wiederholbar zu halten.</p>
-        <p>Über meine Arbeit hinaus beschäftige ich mich aus eigenem Antrieb damit, wiederkehrende Aufgaben zu vereinfachen — etwa mit einem selbst aufgesetzten Hilfsmittel zur Bauteil-Erfassung. Ich habe keine formale Ausbildung in diesem Bereich; es ist praktische Eigeninitiative, getrieben von dem Wunsch, Abläufe spürbar zu verbessern.</p>
-      </div>
+    <main id="main">
+      <section class="page-hero">
+        <span class="eyebrow" data-reveal>Über mich</span>
+        <h1 data-reveal data-delay="80">Wer hinter dem Plan steht.</h1>
+        <p class="lede" data-reveal data-delay="160">
+          Was mich antreibt: der Anspruch, Dinge sauber zu Ende zu bringen — egal ob mit den Händen
+          oder am Bildschirm.
+        </p>
+      </section>
 
-    </div>
-  </section>
+      <section class="content-section">
+        <div class="about-layout">
+          <div class="about-photo" data-reveal>
+            <img src="bilder/yannick-portrait.jpg" alt="Yannick Reiter" loading="lazy" />
+          </div>
 
-  <section class="content-section private">
-    <span class="section-label" data-reveal>Abseits der Arbeit</span>
+          <div class="about-text" data-reveal data-delay="100">
+            <p>
+              Mein Weg beginnt im klassischen Handwerk: An der Fachschule Mödling habe ich
+              Innenraumgestaltung und Möbelbau gelernt und früh den Anspruch entwickelt, dass ein
+              Werkstück erst dann fertig ist, wenn es dem eigenen Anspruch standhält. Dieser
+              Anspruch begleitet mich bis heute.
+            </p>
+            <p>
+              Seit 2011 bin ich bei der F-List GmbH in Thomasberg. Begonnen habe ich als
+              CNC-Maschinist im Zwei-Schicht-Betrieb, anschließend habe ich über sechs Jahre ein
+              siebenköpfiges Team geleitet. Seit 2019 sitze ich überwiegend am Bildschirm und
+              übersetze Konstruktionsdaten in Bearbeitungsprogramme für die Fertigung.
+            </p>
+            <p>
+              Was mich auszeichnet, ist die Verbindung von Praxis und Technik: Ich weiß aus eigener
+              Erfahrung, worauf es an der Maschine ankommt, und nehme das mit in die Programmierung.
+              Methoden wie Kaizen, 5S und Poka Yoke sind für mich keine Schlagworte, sondern Teil
+              des Tagesgeschäfts — sie helfen, Abläufe sauber, sicher und wiederholbar zu halten.
+            </p>
+            <p>
+              Über meine Arbeit hinaus beschäftige ich mich aus eigenem Antrieb damit,
+              wiederkehrende Aufgaben zu vereinfachen — etwa mit einem selbst aufgesetzten
+              Hilfsmittel zur Bauteil-Erfassung. Ich habe keine formale Ausbildung in diesem
+              Bereich; es ist praktische Eigeninitiative, getrieben von dem Wunsch, Abläufe spürbar
+              zu verbessern.
+            </p>
+          </div>
+        </div>
+      </section>
 
-    <div class="private-intro" data-reveal>
-      <p>Abseits der Arbeit bin ich gerne draußen unterwegs, fotografiere und filme mit meiner DJI-Drohne und halte besondere Perspektiven fest. Familie, mein Jack Russell Oskar und kleine kreative Projekte gehören ebenfalls zu den Dingen, die mir privat wichtig sind.</p>
-    </div>
+      <section class="content-section private">
+        <span class="section-label" data-reveal>Abseits der Arbeit</span>
 
-    <!-- Foto-Karussell: eigene Bilder in /bilder ablegen und die src-Pfade anpassen. -->
-    <div class="carousel" data-reveal aria-roledescription="Karussell" aria-label="Eigene Aufnahmen">
-      <button class="carousel-btn carousel-prev" type="button" aria-label="Vorheriges Bild">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <ul class="carousel-track" tabindex="0" aria-label="Bildergalerie, horizontal scrollbar">
-        <li class="carousel-slide"><img src="bilder/oskar-rax.webp" alt="Mein Jack Russell Oskar am Gipfel der Rax" loading="lazy"></li>
-        <li class="carousel-slide"><img src="bilder/burg-forchtenstein.webp" alt="Drohnenaufnahme der Burg Forchtenstein im Herbst" loading="lazy"></li>
-        <li class="carousel-slide"><img src="bilder/hohe-wand.webp" alt="Drohnenaufnahme der Hohen Wand in der Abenddämmerung" loading="lazy"></li>
-        <li class="carousel-slide"><img src="bilder/munitionsfabrik.webp" alt="Drohnenaufnahme einer verlassenen Munitionsfabrik von oben" loading="lazy"></li>
-        <li class="carousel-slide"><img src="bilder/schneelandschaft-01.webp" alt="Drohnenaufnahme einer winterlichen Landschaft" loading="lazy"></li>
-        <li class="carousel-slide"><img src="bilder/schneelandschaft-02.webp" alt="Drohnenaufnahme einer verschneiten Waldstraße" loading="lazy"></li>
-      </ul>
-      <button class="carousel-btn carousel-next" type="button" aria-label="Nächstes Bild">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-    </div>
+        <div class="private-intro" data-reveal>
+          <p>
+            Abseits der Arbeit bin ich gerne draußen unterwegs, fotografiere und filme mit meiner
+            DJI-Drohne und halte besondere Perspektiven fest. Familie, mein Jack Russell Oskar und
+            kleine kreative Projekte gehören ebenfalls zu den Dingen, die mir privat wichtig sind.
+          </p>
+        </div>
 
-    <div class="video-embed" data-reveal>
-      <iframe src="https://www.youtube-nocookie.com/embed/Q7wlRB4WaYM?si=7febDJCA2EIFyvdl&amp;controls=0"
-              title="Video von Yannick Reiter"
-              loading="lazy"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen></iframe>
-    </div>
-  </section>
+        <!-- Foto-Karussell: eigene Bilder in /bilder ablegen und die src-Pfade anpassen. -->
+        <div
+          class="carousel"
+          data-reveal
+          aria-roledescription="Karussell"
+          aria-label="Eigene Aufnahmen"
+        >
+          <button class="carousel-btn carousel-prev" type="button" aria-label="Vorheriges Bild">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <ul class="carousel-track" tabindex="0" aria-label="Bildergalerie, horizontal scrollbar">
+            <li class="carousel-slide">
+              <img
+                src="bilder/oskar-rax.webp"
+                alt="Mein Jack Russell Oskar am Gipfel der Rax"
+                loading="lazy"
+              />
+            </li>
+            <li class="carousel-slide">
+              <img
+                src="bilder/burg-forchtenstein.webp"
+                alt="Drohnenaufnahme der Burg Forchtenstein im Herbst"
+                loading="lazy"
+              />
+            </li>
+            <li class="carousel-slide">
+              <img
+                src="bilder/hohe-wand.webp"
+                alt="Drohnenaufnahme der Hohen Wand in der Abenddämmerung"
+                loading="lazy"
+              />
+            </li>
+            <li class="carousel-slide">
+              <img
+                src="bilder/munitionsfabrik.webp"
+                alt="Drohnenaufnahme einer verlassenen Munitionsfabrik von oben"
+                loading="lazy"
+              />
+            </li>
+            <li class="carousel-slide">
+              <img
+                src="bilder/schneelandschaft-01.webp"
+                alt="Drohnenaufnahme einer winterlichen Landschaft"
+                loading="lazy"
+              />
+            </li>
+            <li class="carousel-slide">
+              <img
+                src="bilder/schneelandschaft-02.webp"
+                alt="Drohnenaufnahme einer verschneiten Waldstraße"
+                loading="lazy"
+              />
+            </li>
+          </ul>
+          <button class="carousel-btn carousel-next" type="button" aria-label="Nächstes Bild">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              aria-hidden="true"
+            >
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
 
-</main>
+        <div class="video-embed" data-reveal>
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/Q7wlRB4WaYM?si=7febDJCA2EIFyvdl&amp;controls=0"
+            title="Video von Yannick Reiter"
+            loading="lazy"
+            allow="
+              accelerometer;
+              autoplay;
+              clipboard-write;
+              encrypted-media;
+              gyroscope;
+              picture-in-picture;
+              web-share;
+            "
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </section>
+    </main>
 
-<footer class="site-footer">
-  <p>© 2026 Yannick Reiter</p>
-  <span class="foot-mono">Thomasberg · Neunkirchen</span>
-</footer>
+    <footer class="site-footer">
+      <p>© 2026 Yannick Reiter</p>
+      <span class="foot-mono">Thomasberg · Neunkirchen</span>
+    </footer>
 
-<script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>

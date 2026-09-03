@@ -3,4 +3,9 @@
 Thumbs.db
 *.swp
 .idea/
-.vscode/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Dev-Tooling (node_modules gehoert nie ins Repo)
+node_modules/
