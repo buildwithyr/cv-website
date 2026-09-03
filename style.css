@@ -575,8 +575,6 @@ img { max-width: 100%; display: block; }
 }
 .btn-cv:hover { background: var(--brass-light); transform: translateY(-2px); }
 
-.tel-link { cursor: pointer; }
-
 .contact-form-card {
   background: var(--surface); border: 1px solid var(--line);
   border-radius: var(--radius); box-shadow: var(--shadow-sm);
