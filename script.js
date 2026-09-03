@@ -113,24 +113,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', updateHeaderState, { passive: true });
 });
 
-/* ---------- Telefonnummer-Reveal ---------- */
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('.tel-link').forEach(function (link) {
-    link.addEventListener('click', function (event) {
-      event.preventDefault();
-
-      var reversed = link.getAttribute('data-tel-rev');
-      if (!reversed) return;
-
-      var number = reversed.split('').reverse().join('');
-      var formatted = number.replace(/^(\+\d{2})(\d{3})(\d{7})$/, '$1 $2 $3');
-
-      link.textContent = formatted;
-      link.href = 'tel:' + number;
-    });
-  });
-});
-
 /* ---------- Kontaktformular ---------- */
 document.addEventListener('DOMContentLoaded', function () {
   var form = document.getElementById('contact-form');
