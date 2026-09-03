@@ -17,12 +17,19 @@ document.addEventListener('DOMContentLoaded', function () {
     toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
     toggle.setAttribute('aria-label', isOpen ? 'Menü schließen' : 'Menü öffnen');
   }
-  toggle.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+  toggle.addEventListener('click', function () {
+    setOpen(!nav.classList.contains('open'));
+  });
   nav.querySelectorAll('a').forEach(function (link) {
-    link.addEventListener('click', function () { setOpen(false); });
+    link.addEventListener('click', function () {
+      setOpen(false);
+    });
   });
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && nav.classList.contains('open')) { setOpen(false); toggle.focus(); }
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      setOpen(false);
+      toggle.focus();
+    }
   });
 });
 
@@ -36,8 +43,12 @@ document.addEventListener('DOMContentLoaded', function () {
     el.dataset.counted = '1';
     var target = parseFloat(el.getAttribute('data-count'));
     var suffix = el.getAttribute('data-suffix') || '';
-    if (reduce) { el.textContent = target + suffix; return; }
-    var dur = 1300, start = null;
+    if (reduce) {
+      el.textContent = target + suffix;
+      return;
+    }
+    var dur = 1300,
+      start = null;
     function step(ts) {
       if (start === null) start = ts;
       var p = Math.min((ts - start) / dur, 1);
@@ -50,11 +61,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function reveal(el) {
     var delay = parseFloat(el.getAttribute('data-delay') || '0');
-    setTimeout(function () {
-      el.classList.add('is-visible');
-      var counter = el.matches('[data-count]') ? el : el.querySelector('[data-count]');
-      if (counter) setTimeout(function () { animateCount(counter); }, 140);
-    }, reduce ? 0 : delay);
+    setTimeout(
+      function () {
+        el.classList.add('is-visible');
+        var counter = el.matches('[data-count]') ? el : el.querySelector('[data-count]');
+        if (counter)
+          setTimeout(function () {
+            animateCount(counter);
+          }, 140);
+      },
+      reduce ? 0 : delay
+    );
   }
 
   if (reduce || !('IntersectionObserver' in window)) {
@@ -62,19 +79,30 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) { reveal(entry.target); io.unobserve(entry.target); }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  var io = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          reveal(entry.target);
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+  );
 
-  reveals.forEach(function (el) { io.observe(el); });
+  reveals.forEach(function (el) {
+    io.observe(el);
+  });
 
   // Sicherheits-Fallback: alles, was nach 2,5s noch verborgen ist, sichtbar machen
   // (falls der IntersectionObserver in einer Umgebung nicht auslöst).
   setTimeout(function () {
     reveals.forEach(function (el) {
-      if (!el.classList.contains('is-visible')) { io.unobserve(el); reveal(el); }
+      if (!el.classList.contains('is-visible')) {
+        io.unobserve(el);
+        reveal(el);
+      }
     });
   }, 2500);
 });
@@ -97,8 +125,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function scrollDir(dir) {
       track.scrollBy({ left: dir * step(), behavior: reduce ? 'auto' : 'smooth' });
     }
-    if (prev) prev.addEventListener('click', function () { scrollDir(-1); });
-    if (next) next.addEventListener('click', function () { scrollDir(1); });
+    if (prev)
+      prev.addEventListener('click', function () {
+        scrollDir(-1);
+      });
+    if (next)
+      next.addEventListener('click', function () {
+        scrollDir(1);
+      });
   });
 });
 
@@ -166,7 +200,7 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch(form.action, {
       method: form.method,
       body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
+      headers: { Accept: 'application/json' },
     })
       .then(function (response) {
         if (response.ok) {
