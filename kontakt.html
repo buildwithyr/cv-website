@@ -92,7 +92,13 @@
           <textarea id="form-message" name="message" rows="5" required></textarea>
         </div>
         <input type="text" name="_gotcha" class="form-honeypot" tabindex="-1" autocomplete="off">
-        <button type="submit" class="btn-cv form-submit">Nachricht senden</button>
+        <div class="form-row form-consent-row">
+          <label class="form-consent">
+            <input type="checkbox" id="form-consent" required>
+            <span>Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage zu.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn-cv form-submit" disabled>Nachricht senden</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
       <p class="form-privacy-note">Mit dem Absenden des Formulars werden die eingegebenen Daten zur Bearbeitung der Anfrage übermittelt.</p>
