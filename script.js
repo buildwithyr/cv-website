@@ -121,6 +121,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var status = form.querySelector('.form-status');
   var submitBtn = form.querySelector('.form-submit');
   var honeypot = form.querySelector('.form-honeypot');
+  var consent = form.querySelector('#form-consent');
+
+  if (consent && submitBtn) {
+    consent.addEventListener('change', function () {
+      submitBtn.disabled = !consent.checked;
+    });
+  }
 
   function setStatus(message, isError) {
     if (!status) return;
