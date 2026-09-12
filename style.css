@@ -766,7 +766,7 @@ section[id] { scroll-margin-top: 6rem; }
   background: linear-gradient(transparent, rgba(27, 23, 18, 0.8));
 }
 .preview-cards { gap: 0; grid-template-columns: 1fr; }
-.preview-card { display: grid; grid-template-columns: 4rem 1fr 1.25fr; gap: 1.5rem; align-items: baseline; background: none; border: 0; border-top: 1px solid var(--line-strong); border-radius: 0; padding: 1.7rem 0; box-shadow: none; }
+.preview-card { display: grid; grid-template-columns: 9rem 1fr 1.25fr; gap: 1.5rem; align-items: baseline; background: none; border: 0; border-top: 1px solid var(--line-strong); border-radius: 0; padding: 1.7rem 0; box-shadow: none; }
 .preview-card:last-child { border-bottom: 1px solid var(--line-strong); }
 .preview-card:hover { transform: translateX(4px); box-shadow: none; }
 .preview-card h3 { margin: 0; }
@@ -804,8 +804,9 @@ section[id] { scroll-margin-top: 6rem; }
 @media (max-width: 900px) {
   .profil-card { grid-template-columns: 1fr; gap: 2rem; }
   .profil-portrait { justify-self: start; width: min(100%, 300px); }
-  .preview-card { grid-template-columns: 2.5rem 1fr; gap: 0.5rem 1rem; }
-  .preview-card p { grid-column: 2; }
+  .preview-card { grid-template-columns: 1fr; gap: 0.65rem; }
+  .preview-card .preview-tag { white-space: nowrap; }
+  .preview-card h3, .preview-card p { grid-column: 1; }
   .stat:nth-child(2) { border-right: 0; }
   .stat:nth-child(n+3) { border-top: 1px solid var(--line-strong); }
 }
@@ -858,6 +859,14 @@ html { color-scheme: dark; }
 .hero-inner::before { display: none; }
 @media (max-width: 900px) {
   .hero { --ink: #1B1712; --ink-soft: #38342F; --brass-deep: #745127; }
+  .hero {
+    z-index: 1; border-radius: 0 0 4px 4px;
+    border-bottom: 1px solid rgba(255, 233, 196, 0.55);
+    box-shadow: 0 3px 0 #916C46, 0 6px 0 #60482F,
+      0 16px 18px -8px rgba(8, 16, 20, 0.65),
+      0 35px 42px -20px rgba(8, 16, 20, 0.38);
+  }
+  .hero-scroll { position: relative; padding-top: 2rem; }
   .hero::after { background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 60%); }
   .hero-badge { background: rgba(255,255,255,0.68); border-color: rgba(27,23,18,0.18); }
   .hero .btn-primary { color: #F0F2EF; background: #27343A; }
