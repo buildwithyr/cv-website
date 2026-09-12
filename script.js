@@ -183,7 +183,6 @@ document.addEventListener('DOMContentLoaded', function () {
 /* ---------- Scroll-Fortschritt, Bildbewegung und Werdegang ---------- */
 document.addEventListener('DOMContentLoaded', function () {
   var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var desktop = window.matchMedia('(min-width: 901px)');
   var progress = document.createElement('div');
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
@@ -198,10 +197,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var ratio = height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0;
     progress.style.transform = 'scaleX(' + ratio + ')';
     if (media && hero) {
-      var box = hero.getBoundingClientRect();
-      media.style.transform = !motion.matches && desktop.matches && box.bottom > 0
-        ? 'translateY(' + Math.min(24, Math.max(0, -box.top * 0.06)) + 'px) scale(1.06)'
-        : 'none';
+      // Platte, Borkenkante und Schatten bewegen sich gemeinsam beim Scrollen.
+      media.style.transform = 'none';
     }
     timelines.forEach(function (timeline) {
       var rect = timeline.getBoundingClientRect();
