@@ -770,7 +770,7 @@ section[id] { scroll-margin-top: 6rem; }
 .preview-card:last-child { border-bottom: 1px solid var(--line-strong); }
 .preview-card:hover { transform: translateX(4px); box-shadow: none; }
 .preview-card h3 { margin: 0; }
-.preview-tag { font-size: 0.64rem; }
+.preview-tag { display: block; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: none; white-space: nowrap; }
 .preview-tag::first-letter { color: var(--ink); }
 .preview-card .preview-tag { grid-column: 1; }
 .project-card { border-radius: 4px; box-shadow: none; padding: 2rem; }
