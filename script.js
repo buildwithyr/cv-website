@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return;
   }
 
+  document.documentElement.classList.add('reveal-ready');
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
       if (entry.isIntersecting) { reveal(entry.target); io.unobserve(entry.target); }
@@ -70,13 +71,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   reveals.forEach(function (el) { io.observe(el); });
 
-  // Sicherheits-Fallback: alles, was nach 2,5s noch verborgen ist, sichtbar machen
-  // (falls der IntersectionObserver in einer Umgebung nicht auslöst).
-  setTimeout(function () {
-    reveals.forEach(function (el) {
-      if (!el.classList.contains('is-visible')) { io.unobserve(el); reveal(el); }
-    });
-  }, 2500);
+  // Tastaturnavigation darf nie in verborgenen Inhalten landen.
+  document.addEventListener('focusin', function (event) {
+    var el = event.target.closest('[data-reveal]');
+    if (el) { io.unobserve(el); el.classList.add('is-visible'); }
+  });
 });
 
 /* ---------- Foto-Karussell ---------- */
@@ -179,3 +178,89 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* Das Profilfoto auf ueber-mich.html bleibt jetzt per nativem position:sticky
    (siehe style.css) neben dem Text stehen — kein JS mehr nötig. */
+
+
+/* ---------- Scroll-Fortschritt, Bildbewegung und Werdegang ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+  var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var desktop = window.matchMedia('(min-width: 901px)');
+  var progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+  document.body.appendChild(progress);
+  var media = document.querySelector('.hero-media');
+  var hero = document.querySelector('.hero');
+  var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
+  var pending = false;
+  function update() {
+    pending = false;
+    var height = document.documentElement.scrollHeight - window.innerHeight;
+    var ratio = height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0;
+    progress.style.transform = 'scaleX(' + ratio + ')';
+    if (media && hero) {
+      var box = hero.getBoundingClientRect();
+      media.style.transform = !motion.matches && desktop.matches && box.bottom > 0
+        ? 'translateY(' + Math.min(24, Math.max(0, -box.top * 0.06)) + 'px) scale(1.06)'
+        : 'none';
+    }
+    timelines.forEach(function (timeline) {
+      var rect = timeline.getBoundingClientRect();
+      var fill = Math.max(0, Math.min(1, (window.innerHeight * 0.65 - rect.top) / rect.height));
+      timeline.style.setProperty('--timeline-progress', (motion.matches ? 100 : fill * 100) + '%');
+    });
+  }
+  function schedule() {
+    if (!pending) { pending = true; requestAnimationFrame(update); }
+  }
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule, { passive: true });
+  motion.addEventListener('change', schedule);
+  desktop.addEventListener('change', schedule);
+  update();
+});
+
+/* ---------- Eigene Fotos groß ansehen ---------- */
+document.addEventListener('DOMContentLoaded', function () {
+  var buttons = Array.prototype.slice.call(document.querySelectorAll('.photo-open'));
+  if (!buttons.length) return;
+  if (!('HTMLDialogElement' in window)) {
+    buttons.forEach(function (button) {
+      button.addEventListener('click', function () { window.open(button.querySelector('img').src, '_blank', 'noopener'); });
+    });
+    return;
+  }
+  var dialog = document.createElement('dialog');
+  dialog.className = 'photo-dialog';
+  dialog.setAttribute('aria-label', 'Eigene Aufnahmen');
+  dialog.innerHTML = '<img alt=""><div class="photo-dialog-bar"><p class="photo-dialog-caption" aria-live="polite"></p><div class="photo-dialog-controls"><button type="button" data-photo-prev aria-label="Vorheriges Foto">←</button><button type="button" data-photo-next aria-label="Nächstes Foto">→</button><button type="button" data-photo-close>Schließen</button></div></div>';
+  document.body.appendChild(dialog);
+  var image = dialog.querySelector('img');
+  var caption = dialog.querySelector('.photo-dialog-caption');
+  var current = 0;
+  var previousOverflow = '';
+  function show(index) {
+    current = (index + buttons.length) % buttons.length;
+    var source = buttons[current].querySelector('img');
+    image.src = source.currentSrc || source.src;
+    image.alt = source.alt;
+    caption.textContent = (current + 1) + ' / ' + buttons.length + ' · ' + source.alt;
+  }
+  buttons.forEach(function (button, index) {
+    button.setAttribute('aria-label', button.querySelector('img').alt + ' – vergrößern');
+    button.addEventListener('click', function () {
+      show(index);
+      previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      dialog.showModal();
+    });
+  });
+  dialog.querySelector('[data-photo-prev]').addEventListener('click', function () { show(current - 1); });
+  dialog.querySelector('[data-photo-next]').addEventListener('click', function () { show(current + 1); });
+  dialog.querySelector('[data-photo-close]').addEventListener('click', function () { dialog.close(); });
+  dialog.addEventListener('close', function () { document.body.style.overflow = previousOverflow; });
+  dialog.addEventListener('click', function (event) { if (event.target === dialog) dialog.close(); });
+  dialog.addEventListener('keydown', function (event) {
+    if (event.key === 'ArrowLeft') { event.preventDefault(); show(current - 1); }
+    if (event.key === 'ArrowRight') { event.preventDefault(); show(current + 1); }
+  });
+});
