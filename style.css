@@ -862,12 +862,15 @@ html { color-scheme: dark; }
   .hero {
     z-index: 1; border-radius: 0 0 4px 4px;
     border-bottom: 1px solid rgba(255, 233, 196, 0.55);
-    box-shadow: 0 3px 0 #916C46, 0 6px 0 #60482F,
-      0 16px 18px -8px rgba(8, 16, 20, 0.65),
-      0 35px 42px -20px rgba(8, 16, 20, 0.38);
+    box-shadow: 0 4px 0 #A57B4F, 0 9px 0 #725234,
+      0 18px 20px -5px rgba(4, 10, 14, 0.78),
+      0 40px 52px -12px rgba(4, 10, 14, 0.52);
   }
-  .hero-scroll { position: relative; padding-top: 2rem; }
-  .hero::after { background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 60%); }
+  .hero-scroll { position: relative; padding-top: 3.5rem; }
+  .hero::after {
+    background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 60%),
+      linear-gradient(to top, rgba(59, 37, 19, 0.38), rgba(59, 37, 19, 0.10) 18px, transparent 54px);
+  }
   .hero-badge { background: rgba(255,255,255,0.68); border-color: rgba(27,23,18,0.18); }
   .hero .btn-primary { color: #F0F2EF; background: #27343A; }
   .hero .btn-ghost { color: #27343A; background: rgba(255,255,255,0.75); border-color: rgba(27,23,18,0.2); }
