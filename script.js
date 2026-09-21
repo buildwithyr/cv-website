@@ -212,7 +212,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule, { passive: true });
   motion.addEventListener('change', schedule);
-  desktop.addEventListener('change', schedule);
   update();
 });
 

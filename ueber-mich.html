@@ -3,19 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
-   damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
-(function () {
-  var ua = navigator.userAgent;
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
-  if (uaLooksDesktop) {
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
-  }
-})();
-</script>
 <title>Über mich — Yannick Reiter</title>
 <meta name="description" content="Über Yannick Reiter — Tischler und CNC-Programmierer mit über 15 Jahren Erfahrung in der industriellen Holz- und Bauteilfertigung bei F-List.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -62,7 +49,7 @@
 
       <div class="about-text" data-reveal data-delay="100">
         <p>An der Fachschule Mödling habe ich Innenraumgestaltung und Möbelbau gelernt. Danach war ich als Tischler und CNC-Maschinist bei Puchegger &amp; Jilg tätig.</p>
-        <p>Seit 2011 bin ich bei der F-List GmbH in Thomasberg. Begonnen habe ich als CNC-Maschinist im Zwei-Schicht-Betrieb, anschließend habe ich über sechs Jahre ein siebenköpfiges Team geleitet. Seit 2019 sitze ich überwiegend am Bildschirm und übersetze Konstruktionsdaten in Bearbeitungsprogramme für die Fertigung.</p>
+        <p>Seit Oktober 2011 bin ich bei der F-List GmbH in Thomasberg. Begonnen habe ich als CNC-Maschinist im Zwei-Schicht-Betrieb, anschließend habe ich über sechs Jahre ein siebenköpfiges Team geleitet. Seit 2019 sitze ich überwiegend am Bildschirm und übersetze Konstruktionsdaten in Bearbeitungsprogramme für die Fertigung.</p>
         <p>Die Arbeit an der Maschine kenne ich aus eigener Erfahrung. Heute stimme ich Bearbeitungen mit Konstruktion und Fertigung ab und nutze Methoden wie Kaizen, 5S und Poka Yoke, um Abläufe zu verbessern.</p>
         <p>Für die Suche in Teilelisten habe ich eine eigene kleine App aufgebaut. Softwareentwicklung habe ich nicht gelernt; ich arbeite mich mit Unterstützung von KI-Werkzeugen in solche Projekte ein.</p>
       </div>

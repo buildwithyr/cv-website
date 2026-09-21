@@ -3,19 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<script>
-/* Erkennt "Desktop-Website laden" (Safari/Chrome iOS) und erzwingt echten Desktop-Viewport,
-   damit die max-width Media Queries (860px/480px) nicht mehr greifen. */
-(function () {
-  var ua = navigator.userAgent;
-  var isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-  var uaLooksDesktop = isTouch && !/Mobi/i.test(ua);
-  if (uaLooksDesktop) {
-    var vp = document.querySelector('meta[name="viewport"]');
-    if (vp) vp.setAttribute('content', 'width=1280, initial-scale=0.3');
-  }
-})();
-</script>
 <title>Yannick Reiter — Tischler &amp; CNC-Programmierer</title>
 <meta name="description" content="Yannick Reiter — Tischler und CNC-Programmierer bei F-List. Vom Maschinisten über die Teamleitung zur CNC-Programmierung mit CATIA. Werdegang, Skills und Kontakt.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -53,7 +40,7 @@
     <div class="hero-inner">
       <p class="hero-badge" data-reveal><span class="dot"></span>Tischler &amp; CNC-Programmierer</p>
       <h1 data-reveal data-delay="90">Holz, Maschinen.<br>Und die Programme dazu.</h1>
-      <p class="hero-lede" data-reveal data-delay="180">Ich bin Yannick. Seit 2011 arbeite ich bei F-List in Thomasberg, seit 2019 in der CNC-Programmierung mit CATIA und NC Hops.</p>
+      <p class="hero-lede" data-reveal data-delay="180">Ich bin Yannick, CNC-Programmierer bei F-List in Thomasberg — mit Praxis an der Maschine, bevor ich CATIA und NC Hops gelernt habe.</p>
       <div class="hero-actions" data-reveal data-delay="260">
         <a href="kontakt.html" class="btn btn-primary">Kontakt</a>
         <a href="werdegang.html" class="btn btn-ghost">Werdegang →</a>
@@ -89,7 +76,7 @@
       <div>
         <span class="eyebrow">Profil</span>
         <h2>Von der Maschine an den Bildschirm.</h2>
-        <p class="body">Bevor ich CNC-Programme geschrieben habe, habe ich selbst Maschinen gerüstet und ein Team geleitet. Diese Erfahrung hilft mir heute bei der Abstimmung mit Konstruktion und Fertigung.</p>
+        <p class="body">Bevor ich CNC-Programme geschrieben habe, habe ich selbst Maschinen gerüstet und ein Team geleitet. Diese Praxis fließt heute in jedes Programm ein, das ich für die Fertigung schreibe.</p>
       </div>
       <a class="profil-portrait" href="ueber-mich.html">
         <img src="bilder/yannick-portrait.jpg" alt="Yannick Reiter" loading="lazy" width="600" height="800">
