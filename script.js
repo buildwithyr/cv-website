@@ -169,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function () {
       })
       .finally(function () {
         if (submitBtn) {
-          submitBtn.disabled = false;
+          submitBtn.disabled = !!consent && !consent.checked;
           submitBtn.textContent = originalLabel;
         }
       });

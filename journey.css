@@ -1,0 +1,63 @@
+/* Experimental horizontal journey. The existing content styles remain in style.css. */
+:root{--ink-soft:#C7D3D0;--accent:#64B6AC;--hero-height:max(700px,94vh);--hero-height:max(700px,94svh);--journey-duration:850ms}
+html{scroll-behavior:smooth;background:#27343A}
+body{overflow-x:hidden}
+.site-header{position:fixed;left:0;right:0;top:0}
+.nav-shell{background:rgba(39,52,58,.96);backdrop-filter:none;-webkit-backdrop-filter:none}
+.main-nav a::after{background:var(--accent)}
+.journey-viewport{width:100%;overflow:hidden;position:relative}
+.journey-track{display:flex;position:relative;align-items:flex-start;width:100%;transition:transform var(--journey-duration) cubic-bezier(.65,0,.2,1);isolation:isolate}
+.journey-track.is-moving{will-change:transform}
+.journey-panel{flex:0 0 100%;width:100%;min-width:0;position:relative;z-index:1}
+.journey-panel[inert]{pointer-events:none}
+.wood-board{position:absolute;top:0;left:0;width:600%;height:var(--hero-height);z-index:0;background-image:url('journey-oak.webp');background-repeat:repeat-x;background-size:auto 100%;background-position:left bottom;pointer-events:none;transform:translateY(var(--wood-y,0px));-webkit-mask-image:linear-gradient(#000 91%,transparent);mask-image:linear-gradient(#000 91%,transparent)}
+.engraving{position:absolute;top:0;width:16.666667%;height:100%;transform:translate(var(--wood-x,0px),0)}
+.engraving svg{position:absolute;width:49%;height:65%;right:1%;top:10%;overflow:visible;transform:perspective(1300px) rotateY(var(--wood-tilt,0deg));transform-origin:center}
+.journey-hero{position:relative;display:flex;align-items:center;min-height:var(--hero-height);width:100%;margin:0;padding:0;color:var(--ink);isolation:isolate}
+.journey-hero::before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(39,52,58,.98),rgba(39,52,58,.9) 28%,rgba(39,52,58,.62) 43%,rgba(39,52,58,.06) 66%),linear-gradient(0deg,#27343A 0%,transparent 22%,rgba(39,52,58,.08) 100%)}
+.journey-hero::after{content:'';position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at var(--light-x,75%) var(--light-y,32%),rgba(255,229,181,.13),transparent 55%);opacity:var(--wood-light,1);pointer-events:none}
+.journey-hero .hero-inner{width:100%;max-width:1180px;padding:8rem var(--gutter) 7rem;margin:auto;position:relative;z-index:1}
+.journey-hero h1{font-family:var(--font-display);font-size:clamp(2.7rem,5vw,4.6rem);line-height:1.06;letter-spacing:-.035em;font-weight:700;max-width:52%;color:var(--ink);margin:0}
+.journey-hero .lede,.journey-hero .hero-lede{color:var(--ink-soft);font-size:1.12rem;line-height:1.65;max-width:43%;margin-top:1.6rem}
+.journey-hero .eyebrow{display:block;margin-bottom:1.5rem}
+.journey-hero .hero-actions{max-width:49%;margin-top:2rem}
+.journey-hero .hero-badge{color:#E2C99E;background:rgba(39,52,58,.8);border-color:rgba(240,242,239,.15)}
+.journey-hero .btn-primary{background:#E2C99E;color:#27343A}
+.journey-hero .btn-ghost{background:rgba(39,52,58,.6);color:var(--ink);border-color:rgba(240,242,239,.25)}
+.journey-panel .hero-scroll{margin:0;padding:1.2rem;text-align:center}
+.journey-position{position:absolute;top:calc(var(--hero-height) - 3rem);right:max(2rem,calc((100vw - 1116px)/2));z-index:2;display:flex;align-items:center;gap:.8rem;color:var(--ink-soft);font:11px var(--font-mono);pointer-events:none}
+.journey-line{width:64px;height:1px;background:rgba(199,211,208,.3)}
+.journey-line::before{content:'';display:block;width:var(--journey-progress,16.666%);height:1px;background:var(--accent);transition:width 850ms ease}
+.journey-hero .hero-inner{transition:opacity 350ms ease,translate 500ms ease}
+.journey-panel:not(.is-active) .hero-inner{opacity:.1;translate:0 12px}
+.journey-panel.is-active .hero-inner{opacity:1;translate:0 0}
+.journey-hero [data-reveal]{opacity:1!important;transform:none!important}
+.journey-hero h1:focus{outline:none}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.privacy-dialog{color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:12px;width:min(900px,94vw);max-height:90vh;padding:1.5rem;margin:auto}
+.privacy-dialog::backdrop{background:rgba(12,22,26,.8)}
+.privacy-dialog form{position:sticky;top:0;display:flex;justify-content:flex-end;z-index:2}
+.privacy-dialog .page-hero{padding-top:1rem}
+.journey-panel .content-section:first-of-type{padding-top:4rem}
+@media(min-width:1600px){.engraving svg{right:5%;width:43%}}
+@media(max-width:900px){
+ :root{--hero-height:max(850px,105svh)}
+ .journey-hero{align-items:flex-start}
+ .journey-hero .hero-inner{padding:8rem var(--gutter) 0}
+ .journey-hero h1{font-size:clamp(2.3rem,7vw,3.6rem);max-width:650px}
+ .journey-hero .lede,.journey-hero .hero-lede{max-width:600px;font-size:1.05rem}
+ .journey-hero .hero-actions{max-width:100%}
+ .journey-hero .hero-actions .btn{font-size:.9rem;padding:1rem 1.5rem}
+ .journey-hero::before{background:linear-gradient(180deg,rgba(39,52,58,.97) 0%,rgba(39,52,58,.94) 34%,rgba(39,52,58,.6) 51%,rgba(39,52,58,.04) 67%,rgba(39,52,58,.15) 81%,#27343A 100%)}
+ .engraving svg{top:56%;right:5%;height:29%;width:90%}
+ .engraving-start svg{top:53%;height:35%}
+ .journey-position{right:1.25rem}
+}
+@media(max-width:400px){:root{--hero-height:max(940px,115svh)}.journey-hero h1{font-size:2.3rem}.journey-hero .hero-badge{font-size:.6rem}.engraving svg{top:59%}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.journey-track,.journey-line::before,.journey-hero .hero-inner{transition:none!important}.wood-board,.engraving,.engraving svg{transform:none!important}.journey-panel *{animation:none!important}}
+/* Mirror adjacent texture strips at their shared pixels: no cut bark edge or visible tile seam. */
+.wood-board{background:none;overflow:hidden}
+.wood-grain{position:absolute;inset:0;display:flex;width:max-content;height:100%;pointer-events:none}
+.wood-grain img{display:block;flex:0 0 auto;height:100%;width:calc(var(--hero-height) * 3);max-width:none;object-fit:fill}
+.wood-grain img:nth-child(even){transform:scaleX(-1)}
+@media print{.site-header,.wood-board,.journey-position,.hero-scroll{display:none}.journey-viewport{height:auto!important;overflow:visible}.journey-track{display:block;transform:none!important}.journey-panel{display:block!important;break-before:page}.journey-hero{min-height:0;padding:2rem 0}.journey-hero .hero-inner{opacity:1!important;translate:none!important;padding:0 var(--gutter)}[data-reveal]{opacity:1!important;transform:none!important}}
