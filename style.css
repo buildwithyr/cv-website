@@ -13,11 +13,13 @@
   --bg:          #27343A;
   --surface:     #324148;
   --ink:         #F0F2EF;
-  --ink-soft:    #D1D9D8;
+  --ink-soft:    #C7D3D0;
   --muted:       #B3C0C1;
-  --brass:       #C6A675;
-  --brass-light: #E2C99E;
-  --brass-deep:  #D8B782;
+  /* Akzent (Experiment): Petrol/Teal statt Messing. Token-Namen bleiben gleich. */
+  --brass:       #5FA8A3;
+  --brass-light: #64B6AC;
+  --brass-deep:  #7CC2B9;
+  --icon:        #9BB0B3;
 
   --line:        rgba(231, 239, 238, 0.10);
   --line-strong: rgba(231, 239, 238, 0.19);
@@ -60,7 +62,7 @@ body {
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-::selection { background: rgba(166, 124, 74, 0.24); color: var(--ink); }
+::selection { background: rgba(100, 182, 172, 0.28); color: var(--ink); }
 
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
 
@@ -188,7 +190,7 @@ img { max-width: 100%; display: block; }
   background: var(--brass-light); color: var(--bg);
   box-shadow: none;
 }
-.btn-primary:hover { transform: translateY(-2px); background: #ECD9B9; box-shadow: none; }
+.btn-primary:hover { transform: translateY(-2px); background: #86C8BF; box-shadow: none; }
 .btn-ghost {
   background: rgba(39, 52, 58, 0.3); color: var(--ink);
   border: 1px solid var(--line-strong);
@@ -826,3 +828,66 @@ section[id] { scroll-margin-top: 6rem; }
 .form-status-error { color: #F3AC9F; }
 .content-section p, .content-section li, .contact-value { overflow-wrap: anywhere; }
 h1, h2, h3 { overflow-wrap: anywhere; }
+
+/* ============================================================
+   INTERAKTIVER HERO (hero-scene.js) — nur aktiv mit .hero-3d
+   Ohne WebGL/JS bleibt das statische Hero-Bild von oben.
+   ============================================================ */
+.hero-canvas, .hero-dro { display: none; }
+.hero-3d .hero { background: var(--bg); }
+.hero-3d .hero-media { display: none; }
+.hero-3d .hero-canvas {
+  display: block; position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  opacity: 0; transition: opacity 1.4s var(--ease);
+}
+.hero-3d .hero-canvas.is-ready { opacity: 1; }
+.hero-3d .hero::after {
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(39,52,58,0.72) 0%, rgba(39,52,58,0.35) 30%, transparent 52%),
+    linear-gradient(180deg, transparent 72%, var(--bg) 100%);
+}
+.hero-3d .hero { min-height: 100vh; min-height: 100svh; }
+
+/* Koordinatenanzeige wie an der Maschinensteuerung — bewusst winzig */
+.hero-3d .hero-dro {
+  display: flex; gap: 1.1rem;
+  position: absolute; z-index: 2; right: max(var(--gutter), calc((100% - var(--max-width)) / 2 + var(--gutter))); bottom: 2.2rem;
+  font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.08em;
+  color: var(--icon); opacity: 0.7; pointer-events: none;
+  font-variant-numeric: tabular-nums;
+}
+.hero-3d .hero-dro b { font-weight: 400; color: var(--ink-soft); display: inline-block; min-width: 6ch; text-align: right; }
+
+/* weicher Übergang Hero → Inhalt */
+.hero-3d .hero-scroll { position: relative; z-index: 2; margin-top: -3.2rem; }
+.hero-3d .stats { position: relative; }
+.hero-3d .stats::before {
+  content: ""; position: absolute; left: 50%; top: 0; width: min(60%, 520px); height: 1px;
+  transform: translateX(-50%);
+  background: linear-gradient(90deg, transparent, var(--line-strong), transparent);
+}
+
+@media (max-width: 900px) {
+  /* Dunkler Hero statt heller Holzfläche: Farben zurück auf das Dark-Theme */
+  .hero-3d .hero { --ink: #F0F2EF; --ink-soft: #C7D3D0; --brass-deep: #7CC2B9; }
+  .hero-3d .hero {
+    overflow: hidden; border-radius: 0;
+    min-height: max(100svh, 680px);
+    padding-bottom: 0;
+  }
+  .hero-3d .hero::after {
+    background: linear-gradient(180deg, rgba(39,52,58,0.55) 0%, transparent 38%, transparent 84%, var(--bg) 100%);
+  }
+  .hero-3d .hero-badge { background: rgba(39, 52, 58, 0.66); border-color: var(--line-strong); }
+  .hero-3d .hero .btn-primary { color: var(--bg); background: var(--brass-light); }
+  .hero-3d .hero .btn-ghost { color: var(--ink); background: rgba(39, 52, 58, 0.4); border-color: var(--line-strong); }
+  .hero-3d .hero-actions { max-width: none; }
+  .hero-3d .hero-actions .btn { width: auto; padding: 0.9rem 1.3rem; font-size: 0.88rem; }
+  .hero-3d .hero-dro { display: none; }
+  .hero-3d .hero-scroll { margin-top: 0; padding-top: 1rem; }
+}
+@media (max-width: 350px) {
+  .hero-3d .hero { min-height: max(100svh, 640px); }
+}
