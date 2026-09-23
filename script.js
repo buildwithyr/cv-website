@@ -4,7 +4,14 @@
    - Scroll-Reveal (IntersectionObserver)
    - Zähler-Animation der Kennzahlen
    - Foto-Karussell
+   Seitenbezogene Teile laufen über onPage() und werden nach einem
+   Seitenwechsel ohne Neuladen (plate.js) erneut ausgeführt.
    ============================================================ */
+
+var pageInits = [];
+function onPage(fn) { pageInits.push(fn); }
+window.initPage = function () { pageInits.forEach(function (fn) { fn(); }); };
+document.addEventListener('DOMContentLoaded', function () { window.initPage(); });
 
 /* ---------- Mobile-Navigation ---------- */
 document.addEventListener('DOMContentLoaded', function () {
@@ -27,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ---------- Scroll-Reveal + Zähler ---------- */
-document.addEventListener('DOMContentLoaded', function () {
+onPage(function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var reveals = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
 
@@ -72,14 +79,18 @@ document.addEventListener('DOMContentLoaded', function () {
   reveals.forEach(function (el) { io.observe(el); });
 
   // Tastaturnavigation darf nie in verborgenen Inhalten landen.
-  document.addEventListener('focusin', function (event) {
-    var el = event.target.closest('[data-reveal]');
-    if (el) { io.unobserve(el); el.classList.add('is-visible'); }
-  });
+  window.revealIO = io;
+  if (!window.revealFocusBound) {
+    window.revealFocusBound = true;
+    document.addEventListener('focusin', function (event) {
+      var el = event.target.closest('[data-reveal]');
+      if (el) { if (window.revealIO) window.revealIO.unobserve(el); el.classList.add('is-visible'); }
+    });
+  }
 });
 
 /* ---------- Foto-Karussell ---------- */
-document.addEventListener('DOMContentLoaded', function () {
+onPage(function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   document.querySelectorAll('.carousel').forEach(function (carousel) {
@@ -113,7 +124,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ---------- Kontaktformular ---------- */
-document.addEventListener('DOMContentLoaded', function () {
+onPage(function () {
   var form = document.getElementById('contact-form');
   if (!form) return;
 
@@ -187,19 +198,19 @@ document.addEventListener('DOMContentLoaded', function () {
   progress.className = 'scroll-progress';
   progress.setAttribute('aria-hidden', 'true');
   document.body.appendChild(progress);
-  var media = document.querySelector('.hero-media');
-  var hero = document.querySelector('.hero');
-  var timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
+  var timelines = [];
+  function readTimelines() {
+    timelines = Array.prototype.slice.call(document.querySelectorAll('.timeline'));
+    schedule();
+  }
+  readTimelines();
+  onPage(readTimelines);
   var pending = false;
   function update() {
     pending = false;
     var height = document.documentElement.scrollHeight - window.innerHeight;
     var ratio = height > 0 ? Math.min(1, Math.max(0, window.scrollY / height)) : 0;
     progress.style.transform = 'scaleX(' + ratio + ')';
-    if (media && hero) {
-      // Platte, Borkenkante und Schatten bewegen sich gemeinsam beim Scrollen.
-      media.style.transform = 'none';
-    }
     timelines.forEach(function (timeline) {
       var rect = timeline.getBoundingClientRect();
       var fill = Math.max(0, Math.min(1, (window.innerHeight * 0.65 - rect.top) / rect.height));
@@ -216,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 /* ---------- Eigene Fotos groß ansehen ---------- */
-document.addEventListener('DOMContentLoaded', function () {
+onPage(function () {
   var buttons = Array.prototype.slice.call(document.querySelectorAll('.photo-open'));
   if (!buttons.length) return;
   if (!('HTMLDialogElement' in window)) {
@@ -225,6 +236,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     return;
   }
+  var stale = document.querySelector('.photo-dialog');
+  if (stale) stale.remove();
   var dialog = document.createElement('dialog');
   dialog.className = 'photo-dialog';
   dialog.setAttribute('aria-label', 'Eigene Aufnahmen');
