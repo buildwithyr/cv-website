@@ -8,8 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=20260912-borke-2">
+<link rel="stylesheet" href="style.css?v=20260923-hero3d">
 <noscript><style>[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
+<script>if(window.WebGLRenderingContext)document.documentElement.classList.add('hero-3d');</script>
 </head>
 <body>
 
@@ -37,6 +38,8 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-media" aria-hidden="true"></div>
+    <canvas class="hero-canvas" aria-hidden="true"></canvas>
+    <p class="hero-dro" aria-hidden="true"><span>X <b data-axis="x">600.00</b></span><span>Y <b data-axis="y">360.00</b></span><span>Z <b>−21.60</b></span></p>
     <div class="hero-inner">
       <p class="hero-badge" data-reveal><span class="dot"></span>Tischler &amp; CNC-Programmierer</p>
       <h1 data-reveal data-delay="90">Holz, Maschinen.<br>Und die Programme dazu.</h1>
@@ -138,6 +141,7 @@
   <span class="foot-mono">Thomasberg · Neunkirchen</span>
 </footer>
 
-<script src="script.js?v=20260912-borke-2"></script>
+<script src="script.js?v=20260923-hero3d"></script>
+<script src="hero-scene.js?v=20260923-hero3d" defer></script>
 </body>
 </html>
