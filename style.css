@@ -204,19 +204,6 @@ img { max-width: 100%; display: block; }
   min-height: 90vh; min-height: 90svh;
   display: flex; align-items: center;
 }
-.hero-media {
-  position: absolute; inset: 0; z-index: 0;
-  background: url("hero-cnc-borke.webp") right bottom / cover no-repeat;
-  /* Borkenkante und Schatten gehören zur Platte. */
-  -webkit-mask-image: linear-gradient(to bottom, #000 96%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 96%, transparent 100%);
-}
-.hero::after {
-  content: ""; position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(90deg, rgba(39,52,58,0.97) 0%, rgba(39,52,58,0.86) 32%, rgba(39,52,58,0.12) 70%),
-    linear-gradient(180deg, rgba(39,52,58,0.25) 0%, transparent 50%, var(--bg) 100%);
-}
 .hero-inner {
   position: relative; z-index: 2;
   max-width: var(--max-width); margin: 0 auto; width: 100%;
@@ -670,13 +657,6 @@ img { max-width: 100%; display: block; }
     padding: 6.5rem 0 3.5rem;
   }
   .hero-inner { padding: 0 var(--gutter); }
-  /* Hochformat: Gravur unten rechts, Holzstruktur über den gesamten Hero. */
-  .hero-media {
-    background: url("hero-cnc-mobile-borke.webp") right bottom / cover no-repeat;
-    /* Borke und Schatten scrollen als Teil derselben Platte. */
-    -webkit-mask-image: linear-gradient(to bottom, #000 96%, transparent 100%);
-    mask-image: linear-gradient(to bottom, #000 96%, transparent 100%);
-  }
 
   .stats { grid-template-columns: repeat(2, 1fr); }
   .profil-card { grid-template-columns: 1fr; gap: 2.25rem; padding: 2.5rem; }
@@ -797,7 +777,6 @@ section[id] { scroll-margin-top: 6rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .reveal-ready [data-reveal]:not(.is-visible) { opacity: 1; transform: none; }
-  .hero-media { transform: none !important; }
 }
 
 /* Mobiler Hero: Holzmotiv füllt die Fläche, Text braucht eigenen Kontrast. */
@@ -806,11 +785,7 @@ section[id] { scroll-margin-top: 6rem; }
   .hero {
     z-index: 1; overflow: visible; border-radius: 0 0 3px 3px;
   }
-  .hero-media, .hero::after { border-radius: inherit; }
   .hero-scroll { position: relative; padding-top: 3.5rem; }
-  .hero::after {
-    background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent 60%);
-  }
   .hero-badge { background: rgba(255,255,255,0.68); border-color: rgba(27,23,18,0.18); }
   .hero .btn-primary { color: #F0F2EF; background: #27343A; }
   .hero .btn-ghost { color: #27343A; background: rgba(255,255,255,0.75); border-color: rgba(27,23,18,0.2); }
@@ -826,3 +801,69 @@ section[id] { scroll-margin-top: 6rem; }
 .form-status-error { color: #F3AC9F; }
 .content-section p, .content-section li, .contact-value { overflow-wrap: anywhere; }
 h1, h2, h3 { overflow-wrap: anywhere; }
+
+/* ============================================================
+   DURCHGEHENDE EICHENPLATTE (plate.js)
+   Eine Platte unter allen Seiten; jede Seite zeigt ihren Abschnitt.
+   Beim Wechsel zwischen den Reitern fährt die Platte horizontal weiter.
+   ============================================================ */
+main, .site-footer { position: relative; z-index: 1; }
+.plate-stage {
+  position: absolute; top: 0; left: 0; width: 100%; z-index: 0;
+  height: 90vh; height: 90svh;
+  overflow: hidden; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 90%, transparent 100%);
+}
+.plate-move { position: absolute; inset: 0; transform-origin: 62% 42%; will-change: transform; }
+.plate-wood {
+  position: absolute; inset: 0;
+  background: #1d333c url("plate-oak.webp") 0 0 / auto 100% repeat-x;
+  background-position: calc(var(--pos, 0) * -100vw) 0;
+}
+.plate-word { position: absolute; inset: 0; visibility: hidden; will-change: transform; }
+.plate-word svg { position: absolute; left: 51%; width: 41%; top: 17%; height: 46%; overflow: visible; }
+.plate-word--0 svg { top: 12%; height: 58%; }
+.plate-light {
+  position: absolute; inset: 0 -6%;
+  background: radial-gradient(ellipse 55% 60% at 72% 34%, rgba(255, 228, 188, 0.14), transparent 70%);
+  will-change: transform;
+}
+.plate-shade {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(39,52,58,0.97) 0%, rgba(39,52,58,0.86) 32%, rgba(39,52,58,0.12) 70%),
+    linear-gradient(180deg, rgba(39,52,58,0.25) 0%, transparent 50%, var(--bg) 100%);
+}
+.plate-stage:not(.is-ready) .plate-word { display: none; }
+
+.hero--page .eyebrow { display: block; margin-bottom: 1.5rem; }
+.hero--page .lede {
+  margin-top: 1.6rem; font-size: 1.12rem; line-height: 1.6;
+  color: var(--ink-soft); max-width: 32rem;
+}
+
+/* Inhalt läuft beim Reiterwechsel weich aus bzw. ein */
+main { transition: opacity 0.45s var(--ease), transform 0.6s var(--ease); }
+main.is-leaving {
+  opacity: 0; transform: translate3d(calc(var(--dir, 1) * -48px), 0, 0);
+  transition: opacity 0.24s ease-in, transform 0.3s ease-in;
+}
+main.is-entering { opacity: 0; transform: translate3d(calc(var(--dir, 1) * 48px), 0, 0); transition: none; }
+.is-traveling .site-header { pointer-events: auto; }
+
+@media (max-width: 900px) {
+  .plate-stage { height: max(100svh, 177.778vw); }
+  .plate-word svg, .plate-word--0 svg { left: 5%; width: 90%; top: 63%; height: 17%; }
+  .plate-light { background: radial-gradient(ellipse 80% 45% at 60% 40%, rgba(255, 228, 188, 0.12), transparent 70%); }
+  .plate-shade {
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.18), transparent 55%),
+      linear-gradient(180deg, transparent 80%, var(--bg) 100%);
+  }
+  .hero-actions, .hero-actions .btn { max-width: none; }
+}
+@media (max-width: 480px) {
+  .hero-actions { max-width: none; }
+  .hero-actions .btn { width: auto; padding: 0.9rem 1.2rem; font-size: 0.85rem; }
+}
